@@ -1,0 +1,70 @@
+{% comment %}
+
+block:
+    title
+    header
+    body
+
+{% endcomment %}
+
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'bootstrap-3.2.0-dist/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'css/patch.css' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'css/docs.min.css' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'bootstrap-3.2.0-dist/css/bootstrap-theme.min.css' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'css/doc.pop.css' %}" />
+
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+<script src="{% static 'js/modernizr.2.8.3.js' %}"></script>
+
+{% compress js %}
+<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/docs.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+{% block extra_js %}{% endblock %}
+{% include "includes/footer_scripts.html" %}
+{% endcompress %}
+
+{% block extra_head %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}body{% endblock %}">
+
+{% block header %}{% endblock %}
+{% block body %}{% endblock %}
+
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            {% block footer %}
+                <p class="text-center">©2014 openRPi</p>
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

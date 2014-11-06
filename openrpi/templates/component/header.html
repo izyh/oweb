@@ -1,19 +1,11 @@
-
 {% load i18n future pages_tags %}
-
-<header id="top" role="banner" class="navbar navbar-static-top bs-docs-nav">
+<header class="navbar navbar-static-top bs-docs-nav">
 	<div class="container">
 		<div class="navbar-header">
-			<a href="/" class="navbar-brand"><img class="img-responsive" src="http://img5.picbed.org/uploads/2014/11/logo_small.png" alt="openRPi" width="80px" /></a>
+			<a href="/" class="navbar-brand">
+				<img class="img-responsive" src="http://img5.picbed.org/uploads/2014/11/logo_small.png" alt="openRPi" width="80px" />
+			</a>
 		</div>
-		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-			{% page_menu "component/menus/dropdown.html" %}
-		</nav>
+		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">{% page_menu "component/menus/dropdown.html" %}</nav>
 	</div>
 </header>
-
-<script>
-$(function  () {
-	$('.collapse').collapse();
-})
-</script>

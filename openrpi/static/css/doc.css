@@ -1,0 +1,156 @@
+/* header */
+
+.doc-header {
+    margin-bottom: 40px;
+	position: relative;
+    padding: 30px 15px;
+    color: #bfd2e3;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    background-color: #547999;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#3d5e7d),to(#547999));
+    background-image: -webkit-linear-gradient(top,#3d5e7d 0,#547999 100%);
+    background-image: -o-linear-gradient(top,#3d5e7d 0,#547999 100%);
+    background-image: linear-gradient(to bottom,#3d5e7d 0,#547999 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d5e7d', endColorstr='#547999', GradientType=0);
+    background-repeat: repeat-x
+}
+
+.doc-header h1 {
+    margin-top: 0;
+    color: #fff
+}
+
+.doc-header p {
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 1.4
+}
+
+.doc-header .container {
+    position: relative
+}
+
+@media (min-width: 768px) {
+    .doc-header {
+        padding-top:60px;
+        padding-bottom: 60px;
+        font-size: 24px;
+        text-align: left
+    }
+
+    .doc-header h1 {
+        font-size: 60px;
+        line-height: 1
+    }
+}
+
+@media (min-width: 992px) {
+    .doc-header h1,.doc-header p {
+        margin-right:380px
+    }
+}
+
+/* content */
+
+.doc-content {
+	margin-top: 1em;
+}
+
+.doc-content > h1 {
+	padding-bottom : 9px;
+	margin         : 40px 0 20px;
+	border-bottom  : 1px solid #eee
+}
+
+.doc-content > p {
+	font-size     : 16px;
+	line-height   : 1.75;
+	margin-bottom : 1em;
+}
+
+/* toc */
+
+.doc-toc {
+	margin-top: 1em;
+}
+
+.tocify ul, .tocify li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: 30px;
+}
+
+.tocify-header {
+    text-indent: 10px;
+}
+
+.tocify-subheader {
+    text-indent: 20px;
+    display: none;
+}
+
+.tocify-subheader li {
+    font-size: 12px;
+}
+
+.tocify-subheader .tocify-subheader {
+    text-indent: 30px;
+}
+
+.tocify-subheader .tocify-subheader .tocify-subheader {
+    text-indent: 40px;
+}
+
+/* Twitter Bootstrap Override Style */
+.nav-list > li > a, .nav-list .nav-header {
+    margin: 0px;
+}
+
+/* Twitter Bootstrap Override Style */
+.nav-list > li > a {
+    display: block;
+    padding: 0 9px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #999;
+    line-height: 2em;
+}
+
+.tocify .nav>li>a:hover,.tocify .nav>li>a:focus {
+    padding-left: 9px;
+    color: #3d5e7d;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #3d5e7d
+}
+
+.tocify .nav>.active>a,.tocify .nav>.active:hover>a,.tocify .nav>.active:focus>a {
+    padding-left: 8px;
+    font-weight: 700;
+    color: #3d5e7d;
+    background-color: transparent;
+    border-left: 2px solid #3d5e7d
+}
+
+/* doc-extra */
+
+.doc-extra {
+    padding: 4px 0px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.doc-extra a {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #999
+}
+
+.doc-extra a:hover {
+    color: #3d5e7d;
+    text-decoration: none
+}

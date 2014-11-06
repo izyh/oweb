@@ -9,8 +9,21 @@
 
 {% block body %}
 
-{% for blog in blog_posts.object_list %}
-<h2><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h2>
-{% endfor %}
+<div class="container bs-docs-container">
+	<div class="row">
+		<div class="col-md-9">
+			<h1 class="page-header">文章列表</h1>
+			{% for blog in blog_posts.object_list %}
+				<div class="row">
+					<div class="col-md-9">
+						<h2><a target="_blank" href="{{ blog.get_absolute_url }}">{{ blog.title }} ›</a></h2>
+						<p>{{ blog.user }} | <small>{{ blog.publish_date }}</small></p>
+						<hr />
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
 
 {% endblock %}

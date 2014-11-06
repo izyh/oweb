@@ -21,7 +21,13 @@ CREATE TABLE "pages_richtextpage" (
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/toc.min.js' %}"></script>
+<script src="{% static 'js/docs.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.tocify.min.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -46,7 +52,7 @@ CREATE TABLE "pages_richtextpage" (
 			</div>
 			<!-- outline -->
 			<div class="col-md-3">
-				<div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary"></div>
+				<div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm toc" role="complementary"></div>
 			</div>
 		</div>
 	</div>
@@ -54,11 +60,11 @@ CREATE TABLE "pages_richtextpage" (
 	<script type="text/javascript">
 
 	$( function () {
-		outline_start();
-		content_start();
+		outline_parser();
+		content_parser();
 	});
 
-	function content_start () {
+	function content_parser () {
 		$(".bs-docs-content h1").each(function () {
 			$(this).addClass("page-header");
 		});
@@ -67,16 +73,17 @@ CREATE TABLE "pages_richtextpage" (
 		});
 	}
 
-	function outline_start () {
-		$(".bs-docs-sidebar").toc({
-			'selectors': 'h1,h2',
-			'container': '.bs-docs-content',
-			'onHighlight': function (el) {
-				// console.log(el.html());
-			}
+	function outline_parser () {
+		$(".toc").tocify({
+			'context'         : ".bs-docs-content",
+			'selectors'       : "h1,h2",
+			'showEffect'      : "none",
+			'hideEffect'      : "none",
+			'smoothScroll'    : false,
+			'highlightOffset' : 10,
 		});
-		$(".bs-docs-sidebar").append($("#toc_append").html());
-		$(".bs-docs-sidebar ul").each(function () {
+		$(".toc").append($("#toc_append").html());
+		$(".toc ul").each(function () {
 			$(this).addClass("nav");
 		});
 	}

@@ -40,6 +40,8 @@ block:
 {% compress js %}
 <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
 <script src="{% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}"></script>
+<!-- for hover dropdown -->
+<script src="{% static 'js/bootstrap-extras.js' %}"></script>
 <script src="{% static 'js/app.js' %}"></script>
 {% block extra_js %}{% endblock %}
 {% include "includes/footer_scripts.html" %}

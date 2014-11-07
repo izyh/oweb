@@ -16,6 +16,10 @@
     background-repeat: repeat-x
 }
 
+.doc-header {
+    text-align: left;
+}
+
 .doc-header h1 {
     margin-top: 0;
     color: #fff
@@ -36,7 +40,7 @@
         padding-top:60px;
         padding-bottom: 60px;
         font-size: 24px;
-        text-align: left
+        /*text-align: left*/
     }
 
     .doc-header h1 {
@@ -47,7 +51,7 @@
 
 @media (min-width: 992px) {
     .doc-header h1,.doc-header p {
-        margin-right:380px
+        /*margin-right:380px;*/
     }
 }
 

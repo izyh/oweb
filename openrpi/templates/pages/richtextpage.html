@@ -34,32 +34,22 @@ CREATE TABLE "pages_richtextpage" (
 {% endblock %}
 
 {% block body %}
-
-	<div class="page-jumbotron">
-		<div class="container">
-			<h1>{{ page.title }}</h1>
-			<p>{{ page.description }}</p>
-		</div>
-	</div>
-
+<div class="page-jumbotron">
 	<div class="container">
-		<div class="row">
-			<!-- Main content -->
-			<div class="col-md-9" role="main">
-				<div class="doc-content">
-					{{ page.richtextpage.content | richtext_filters | safe }}
-				</div>
-			</div>
-			<!-- Right side -->
-			<div class="col-md-3 pin_top"></div>
-		</div>
+		<h1>{{ page.title }}</h1>
+		<p>{{ page.description }}</p>
 	</div>
+</div>
 
-	<script type="text/javascript">
+<div class="container doc-content">
+	<!-- Main content -->
+	<div class="row">{{ page.richtextpage.content | richtext_filters | safe }}</div>
+</div>
+
+<script type="text/javascript">
 
 	$( function () {
 		spage_jumbotron_bg("/");
 	});
 	</script>
-
 {% endblock %}

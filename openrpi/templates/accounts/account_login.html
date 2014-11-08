@@ -16,22 +16,7 @@
 	padding-top: 25px;">
 		<div class="col-md-7"></div>
 		<div class="col-md-4">
-			{% errors_for form %}
-			<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-				{% csrf_token %}
-				<fieldset>
-					<legend>欢迎登录 openRPi</legend>
-					<div class="form-group">
-						<label for="id_username">用户名或邮箱地址:</label>
-						<input id="id_username" name="username" type="text" class="form-control" placeholder="你的用户名或邮箱地址" required autofocus></div>
-					<div class="form-group">
-						<label for="id_password">密码:</label>
-						<input id="id_password" name="password" type="password" class="form-control" placeholder="输入你的密码" required></div>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary pull-left" value="{{ title }}">登录</button>
-					</div>
-				</fieldset>
-			</form>
+			{{ block.super }}
 			<hr/>
 			{% url "signup" as signup_url %}
 			<p>还没有帐号，现在就来<a href="{{ signup_url }}?next={{ request.GET.next }}">注册</a>一个吧！</p>

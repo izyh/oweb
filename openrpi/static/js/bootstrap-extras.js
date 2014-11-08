@@ -23,7 +23,7 @@ $(function()
             $this.prop('hoverIntent', setTimeout(function()
             {
                 $this.addClass('open');
-            }, 250));
+            }, 100));
         })
         .on('mouseleave', function()
         {
@@ -35,7 +35,7 @@ $(function()
             $this.prop('hoverTimeout', setTimeout(function()
             {
                 $this.removeClass('open');
-            }, 250));
+            }, 100));
         });
     /**
      * Touch events

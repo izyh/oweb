@@ -1,48 +1,48 @@
-{% extends "base.html" %}
-{% load i18n mezzanine_tags %}
+{% extends "accounts/account_form.html" %}
+{% load i18n mezzanine_tags future %}
 
 {% block title %}登录{% endblock %}
-
-{% block header %}
-{% include "component/header.html" %}
-{% endblock %}
 
 {% block body %}
 
 {% if request.user.is_authenticated %}
-    <p>你已经登录。如果需要登录其他用户，请先退出当前登录用户。</p>
-	
+<p>你已经登录。如果需要登录其他用户，请先退出当前登录用户。</p>
 {% else %}
-<div class="row">
-	<div class="col-md-2"> </div>
-	<div class="col-md-5">
-	{% errors_for form %}
-
-	<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
-		<fieldset>
-		<legend>登录</legend>
-		<div class="form-group">
-			<label for="id_username">用户名或邮箱地址:</label>
-			<input id="id_username" name="username" type="text" class="form-control" placeholder="你的电子邮箱" required autofocus>
-		
-		</div>
-		<div class="form-group">
-			<label for="id_password">密码:</label>
-			<input id="id_password" name="password" type="password" class="form-control" placeholder="输入你的密码" required>
-			
-		</div>
-		<div class="form-actions">
-			<button type="submit" class="btn btn-primary btn-lg pull-left" value="{{ title }}">提交</button>
-		</div>
-		</fieldset>
-	</form>
-
-    {% url "signup" as signup_url %}
-    <p>{% blocktrans with request.GET.next as next %}还没有帐号，现在就来<a href="{{ signup_url }}?next={{ next }}">注册</a> 一个吧！{% endblocktrans %}</p>
-    {% url "mezzanine_password_reset" as password_reset_url %}
-    {% url "profile_update" as profile_update_url %}
-    {% blocktrans %}<p>忘记密码了吗？那就 <a href="{{ password_reset_url }}?next={{ profile_update_url }}">重置密码</a> 吧！</p>{% endblocktrans %}</p>
-		</div>
+<div class="container">
+	<div class="row" style="
+	margin-top:50px;
+	background-color:whitesmoke;
+	padding-bottom: 20px;
+	padding-top: 25px;">
+		<div class="col-md-7"></div>
+		<div class="col-md-4">
+			{% errors_for form %}
+			<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+				{% csrf_token %}
+				<fieldset>
+					<legend>欢迎登录 openRPi</legend>
+					<div class="form-group">
+						<label for="id_username">用户名或邮箱地址:</label>
+						<input id="id_username" name="username" type="text" class="form-control" placeholder="你的用户名或邮箱地址" required autofocus></div>
+					<div class="form-group">
+						<label for="id_password">密码:</label>
+						<input id="id_password" name="password" type="password" class="form-control" placeholder="输入你的密码" required></div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary pull-left" value="{{ title }}">登录</button>
+					</div>
+				</fieldset>
+			</form>
+			<hr/>
+			{% url "signup" as signup_url %}
+			<p>还没有帐号，现在就来<a href="{{ signup_url }}?next={{ request.GET.next }}">注册</a>一个吧！</p>
+			{% url "mezzanine_password_reset" as password_reset_url %}
+		    {% url "profile_update" as profile_update_url %}
+		    {% blocktrans %}
+			<p><a href="{{ password_reset_url }}?next={{ profile_update_url }}">忘记密码？</a></p>
+			{% endblocktrans %}
+		</p>
+	</div>
+	</div>
 </div>
 {% endif %}
 

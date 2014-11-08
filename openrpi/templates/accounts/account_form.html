@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags staticfiles %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block header %}
+{% include "component/header.html" %}
+{% endblock %}
+
+{% block body %}
+
+<div class="doc-content">
+
+{% errors_for form %}
+
+<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+    <fieldset>
+    <legend>{{ title }}</legend>
+    {% fields_for form %}
+    <div class="form-actions">
+        {% block account_form_actions %}
+        <input class="btn btn-primary btn-lg pull-right" type="submit" value="{{ title }}">
+        {% endblock %}
+    </div>
+    </fieldset>
+</form>
+
+</div>
+{% endblock %}

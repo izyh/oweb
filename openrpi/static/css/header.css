@@ -1,7 +1,9 @@
 .header-nav {
     margin-bottom: 0;
     background-color: #fff;
-    border-bottom: 0
+    border-bottom: 0;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 10px rgba(0, 0, 0, 0.075);
 }
 
 .header-nav .navbar-brand,.header-nav .navbar-nav>li>a {

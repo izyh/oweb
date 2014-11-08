@@ -384,3 +384,4 @@ EMAIL_HOST = 'smtp.exmail.qq.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER='message@openrpi.org'
 EMAIL_HOST_PASSWORD='openrpiorg2014'
+DEFAULT_FROM_EMAIL='message@openrpi.org'

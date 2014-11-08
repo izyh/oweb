@@ -256,11 +256,12 @@ INSTALLED_APPS = (
 
 AUTH_PROFILE_MODULE = "accounts.userProfile"
 #ACCOUNTS_VERIFICATION_REQUIRED = True
-#ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
-#    "first_name",
-#    "last_name",
-#    "signup_date",
-#)
+ACCOUNTS_PROFILE_VIEWS_ENABLED = True
+ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
+    "first_name",
+    "last_name",
+   "signup_date",
+)
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its

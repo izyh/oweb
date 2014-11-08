@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block title %}注册{% endblock %}
+
+{% block header %}
+{% include "component/header.html" %}
+<style type="text/css">
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+    }
+    .errorlist li {
+        background-color: white;
+        color: red;
+        display: block;
+        font-size: 10px;
+        margin: 0 0 3px;
+        padding: 4px 5px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+{% if request.user.is_authenticated %}
+    <p>你已经登录。如果创建新用户，请先退出当前登录用户。</p>
+	
+{% else %}
+<div class="row">
+	<div class="col-md-2"> </div>
+	<div class="col-md-5">
+	{% errors_for form %}
+
+	<form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}
+		<fieldset>
+		<legend>注册</legend>
+		<div class="form-group">
+			<label for="id_username">用户名</label>
+			<input id="id_username" name="username" type="text" class="form-control" placeholder="用户名" required autofocus>
+			{{ form.username.errors }}
+		</div>
+		<div class="form-group">
+			<label for="id_email">电子邮箱</label>
+			<input id="id_email" name="email" type="email" class="form-control" placeholder="你的电子邮箱" required>
+			{{ form.email.errors }}
+		</div>
+		<div class="form-group">
+			<label for="id_password1">设置密码:</label>
+			<input id="id_password2" name="password1" type="password" class="form-control" placeholder="输入你的密码" required>
+			{{ form.password1.errors }}
+			
+		</div>
+		<div class="form-group">
+			<label for="id_password2">确认密码:</label>
+			<input id="id_password2" name="password2" type="password" class="form-control" placeholder="再次输入密码" required>
+			{{ form.password2.errors }}
+			
+		</div>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary btn-lg pull-left" value="{{ title }}">提交</button>
+		</div>
+		</fieldset>
+	</form>
+
+	{% if settings.ACCOUNTS_APPROVAL_REQUIRED %}
+	<p>{注册之后，我们将审核你的注册信息，并在账户激活后邮件通知你，请你耐心等候！%}</p>
+	{% elif settings.ACCOUNTS_VERIFICATION_REQUIRED %}
+	<p>{注册之后，你将收到一封确认邮件，请点击邮件中的链接以激活你的账户。}</p>
+	{% endif %}
+	</div>
+</div>
+{% endif %}
+
+{% endblock %}

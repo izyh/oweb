@@ -110,12 +110,14 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+#LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "zh_CN"
 
 # Supported languages
 _ = lambda s: s
 LANGUAGES = (
     ('en', _('English')),
+    ('zh_CN', _('Chinese')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -130,7 +132,8 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+#USE_I18N = False
+USE_I18N = True
 
 # Tuple of IP addresses, as strings, that:
 #   * See debug comments, when DEBUG is true
@@ -232,7 +235,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
 INSTALLED_APPS = (
     "openrpi",
-    "accounts",
+	"accounts",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -255,7 +258,7 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = "accounts.userProfile"
-#ACCOUNTS_VERIFICATION_REQUIRED = True
+ACCOUNTS_VERIFICATION_REQUIRED = True
 ACCOUNTS_PROFILE_VIEWS_ENABLED = True
 ACCOUNTS_PROFILE_FORM_EXCLUDE_FIELDS = (
     "first_name",
@@ -374,3 +377,10 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+#Send Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.exmail.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER='message@openrpi.org'
+EMAIL_HOST_PASSWORD='openrpiorg2014'

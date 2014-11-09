@@ -34,14 +34,14 @@ CREATE TABLE "pages_richtextpage" (
 {% endblock %}
 
 {% block body %}
-<div class="page-jumbotron">
+<!-- <div class="page-jumbotron">
 	<div class="container">
 		<h1>{{ page.title }}</h1>
 		<p>{{ page.description }}</p>
 	</div>
-</div>
+</div> -->
 
-<div class="container doc-content">
+<div class="container doc-content" style="margin-top:0">
 	<!-- Main content -->
 	<div class="row">{{ page.richtextpage.content | richtext_filters | safe }}</div>
 </div>

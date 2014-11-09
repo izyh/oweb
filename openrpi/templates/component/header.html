@@ -23,16 +23,16 @@
 						{% url "logout" as logout_url %}
 						<li><a href="{{ logout_url }}?next={{ request.path }}">退出</a></li>
 					</ul>
-				</li>
+				</li>e
 				{% else %}
 				{% url "signup" as signup_url %}
 				{% url "login" as login_url %}
 					{% if request.path == login_url or request.path == signup_url %}
-						<li><a href="{{ signup_url }}?next={{ request.GET.next }}" >注册</a></li>
-						<li><a href="{{ login_url }}?next={{ request.GET.next }}" >登录</a></li>
+						<!-- <li><a href="{{ signup_url }}?next={{ request.GET.next }}" >注册</a></li> -->
+						<li><a href="{{ login_url }}?next={{ request.GET.next }}" >登录 ›</a></li>
 					{% else %}
-						<li><a href="{{ signup_url }}?next={{ request.path }}" >注册</a></li>
-						<li><a href="{{ login_url }}?next={{ request.path }}" >登录</a></li>
+						<!-- <li><a href="{{ signup_url }}?next={{ request.path }}" >注册</a></li> -->
+						<li><a href="{{ login_url }}?next={{ request.path }}" >登录 ›</a></li>
 					{% endif %}
 				{% endif %}
 			</ul>

@@ -41,9 +41,9 @@ CREATE TABLE "pages_richtextpage" (
 	</div>
 </div> -->
 
-<div class="container doc-content" style="margin-top:0">
+<div class="container-flup doc-content" style="margin-top:0">
 	<!-- Main content -->
-	<div class="row">{{ page.richtextpage.content | richtext_filters | safe }}</div>
+	<div class="row" style="margin-left:0; margin-right:0">{{ page.richtextpage.content | richtext_filters | safe }}</div>
 </div>
 
 <script type="text/javascript">

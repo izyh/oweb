@@ -29,8 +29,7 @@ block:
     <link rel="stylesheet"    type="text/css"     href="{% static 'bootstrap-3.2.0-dist/css/bootstrap.min.css' %}" />
     <link rel="stylesheet"    type="text/css"     href="{% static 'css/patch.css' %}" />
     <link rel="stylesheet"    type="text/css"     href="{% static 'bootstrap-3.2.0-dist/css/bootstrap-theme.min.css' %}" />
-    <link rel="stylesheet"    type="text/css"     href="{% static 'css/doc.pop.css' %}" />
-    <link rel="stylesheet"    type="text/css"     href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet"    type="text/css"     href="{% static 'css/openrpi.css' %}" />
 
 {% block extra_css %}{% endblock %}
 {% endcompress %}
@@ -42,7 +41,6 @@ block:
 <script src="{% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}"></script>
 <!-- for hover dropdown -->
 <script src="{% static 'js/bootstrap-extras.js' %}"></script>
-<script src="{% static 'js/app.js' %}"></script>
 {% block extra_js %}{% endblock %}
 {% include "includes/footer_scripts.html" %}
 {% endcompress %}
@@ -66,7 +64,7 @@ block:
         <div class="row">
             <div class="col-md-12">
             {% block footer %}
-                <p class="text-center">©2014 openRPi</p>
+                <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
                 <p class="text-center small">专注于嵌入式入门与兴趣培养计划的开源组织</p>
             {% endblock %}
             </div>

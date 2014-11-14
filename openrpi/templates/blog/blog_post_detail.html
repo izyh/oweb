@@ -33,11 +33,10 @@ CREATE TABLE "pages_richtextpage" (
 
 {% block body %}
 
-	<div class="jumbotron jumbotron-lblue jumbotron-textleft">
+	<div class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;">
 		<div class="container">
-			<h1 style="color:white">{{ blog_post.title }}</h1>
+			<h1 style="color:white;font-size:50px">{{ blog_post.title }}</h1>
 			<p style="color:#bfd2e3">{{ blog_post.description }}</p>
-			<br/>
 			<p style="color:#bfd2e3">{{ blog_post.user }}</p>
 			<!-- <p><small>{{ blog_post.email }}</small></p> -->
 		</div>
@@ -54,7 +53,7 @@ CREATE TABLE "pages_richtextpage" (
 			<div class="col-md-3 pin_top">
 				<!-- toc -->
 				<div class="row">
-					<div class="col-md-12"><div class="doc-toc"></div></div>
+					<div class="col-md-12"><div class="doc-toc" style="margin-top:10px"></div></div>
 				</div>
 			</div>
 		</div>

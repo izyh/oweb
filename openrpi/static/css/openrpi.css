@@ -1,0 +1,147 @@
+/*************************** body */
+
+body p {
+    font-size: 16px;
+    line-height: 1.75;
+    margin-bottom: 1em;
+}
+
+/*************************** nav */
+.header-nav {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 0;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 10px rgba(0, 0, 0, 0.075);
+}
+.header-nav .navbar-brand,
+.header-nav .navbar-nav>li>a {
+    font-weight: 500;
+    color: #3d5e7d
+}
+.header-nav .navbar-nav>li>a:hover,
+.header-nav .navbar-nav>.active>a,
+.header-nav .navbar-nav>.active>a:hover {
+    color: #463265;
+    background-color: hsl(0, 0%, 95%)
+}
+.header-nav .navbar-toggle .icon-bar {
+    background-color: #3d5e7d
+}
+.header-nav .navbar-header .navbar-toggle {
+    border-color: #fff
+}
+.header-nav .navbar-header .navbar-toggle:hover,
+.header-nav .navbar-header .navbar-toggle:focus {
+    background-color: #f9f9f9;
+    border-color: #f9f9f9
+}
+
+/*************************** jumbotron */
+.jumbotron {
+    position: relative;
+    padding: 40px 0;
+}
+.jumbotron {
+    color: white;
+}
+.jumbotron .container {
+    position: relative;
+    z-index: 2
+}
+.jumbotron-dblue {
+    background: hsl(209, 100%, 10%);
+    background: -moz-linear-gradient(45deg, hsl(209, 100%, 10%) 0, hsl(208, 36%, 31%) 100%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, hsl(209, 100%, 10%)), color-stop(100%, hsl(208, 36%, 31%)));
+    background: -webkit-linear-gradient(45deg, hsl(209, 100%, 10%) 0, hsl(208, 36%, 31%) 100%);
+    background: -o-linear-gradient(45deg, hsl(209, 100%, 10%) 0, hsl(208, 36%, 31%) 100%);
+    background: -ms-linear-gradient(45deg, hsl(209, 100%, 10%) 0, hsl(208, 36%, 31%) 100%);
+    background: linear-gradient(45deg, hsl(209, 100%, 10%) 0, hsl(208, 36%, 31%) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='hsl(209, 100%, 10%)', endColorstr='hsl(208, 36%, 31%)', GradientType=1);
+}
+.jumbotron-lblue {
+    background-color: #547999;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3d5e7d), to(#547999));
+    background-image: -webkit-linear-gradient(top, #3d5e7d 0, #547999 100%);
+    background-image: -o-linear-gradient(top, #3d5e7d 0, #547999 100%);
+    background-image: linear-gradient(to bottom, #3d5e7d 0, #547999 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d5e7d', endColorstr='#547999', GradientType=0);
+    background-repeat: repeat-x
+}
+.jumbotron-textleft {
+    text-align: left;
+}
+.jumbotron-textcenter {
+    text-align: center;
+}
+
+/* doc */
+.doc-content a[target=_blank]:after {
+    content: " ›"
+}
+.doc-content img {
+    display: block;
+    width: 100% \9;
+    max-width: 100%;
+    height: auto;
+    -moz-box-shadow: 10px 10px 5px rgb(170, 170, 170); /* old Firefox */
+    box-shadow: 2px 2px 5px rgb(170, 170, 170);
+}
+.doc-content h1 {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee
+}
+
+/*************************** toc */
+.doc-toc {
+    font-size: 12px
+}
+.doc-toc .tocify ul,
+.doc-toc .tocify li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: 30px;
+}
+.doc-toc .tocify-header {
+    text-indent: 10px;
+}
+.doc-toc .tocify-subheader {
+    text-indent: 20px;
+    display: none;
+}
+.doc-toc .tocify-subheader li {
+    /*font-size: 12px;*/
+    font-size: 80%
+}
+.doc-toc .tocify-subheader .tocify-subheader {
+    text-indent: 30px;
+}
+.doc-toc .tocify-subheader .tocify-subheader .tocify-subheader {
+    text-indent: 40px;
+}
+
+/* Twitter Bootstrap Override Style */
+.doc-toc .nav-list > li > a,
+.doc-toc .nav-list .nav-header {
+    margin: 0px;
+}
+
+/* Twitter Bootstrap Override Style */
+.doc-toc .nav-list > li > a {
+    display: block;
+    padding: 0 9px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #999;
+    line-height: 2em;
+}
+.doc-toc .active {
+    background-color: #eee;
+}
+.doc-toc .nav-list > .active > a {
+    color: darkblue;
+    font-weight: bold;
+}

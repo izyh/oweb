@@ -234,6 +234,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
+    # "moderna",
     "openrpi",
 	"accounts",
     "django.contrib.admin",

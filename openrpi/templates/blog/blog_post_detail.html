@@ -1,82 +1,126 @@
 {% extends "blog/blog_post_list.html" %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
 
-{% comment %}
+{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
-block:
-	# header    @ base.html
-	# extra_js  @ base.html
-	# extra_css @ base.html
-	# title     @ blog/blog_post_list.html @ base.html
-	# body      @ blog/blog_post_list.html @ base.html
+{% block meta_keywords %}{% metablock %}
+{% keywords_for blog_post as tags %}
+{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+{% endmetablock %}{% endblock %}
 
-sqlite> .schema pages_richtextpage
-CREATE TABLE "pages_richtextpage" (
-    "page_ptr_id" integer NOT NULL PRIMARY KEY REFERENCES "pages_page" ("id"),
-    "content" text NOT NULL
-);
+{% block meta_description %}{% metablock %}
+{{ blog_post.description }}
+{% endmetablock %}{% endblock %}
 
-{% endcomment %}
-
-{% load mezzanine_tags staticfiles %}
-
-{% block title %}{{ blog_post.title }}{% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/jquery-ui.min.js' %}"></script>
-<script src="{% static 'js/jquery.tocify.min.js' %}"></script>
-<script src="{% static 'js/jquery.pin.js' %}"></script>
+{% block title %}
+{% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
 {% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
-{% endblock %}
-
-{% block body %}
-
-	<div class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;">
-		<div class="container">
-			<h1 style="color:white;font-size:50px">{{ blog_post.title }}</h1>
-			<p style="color:#bfd2e3">{{ blog_post.description }}</p>
-			<p style="color:#bfd2e3">{{ blog_post.user }}</p>
-			<!-- <p><small>{{ blog_post.email }}</small></p> -->
-		</div>
-	</div>
-
+{% block title_wrapper %}
+<section class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;">
 	<div class="container">
-		<div class="row">
-			<!-- Main content -->
-			<div class="col-md-9" role="main">
-				<div class="doc-content">
-					{{ blog_post.content | richtext_filters | safe }}
-				</div>	
-			</div>
-			<div class="col-md-3 pin_top">
-				<!-- toc -->
-				<div class="row">
-					<div class="col-md-12"><div class="doc-toc" style="margin-top:10px"></div></div>
-				</div>
-			</div>
-		</div>
+		<h1 style="color:white;font-size:50px">{{ blog_post.title }}</h1>
+		<p style="color:#bfd2e3">{{ blog_post.description }}</p>
+		<!-- <p style="color:#bfd2e3">{{ blog_post.user }}</p> -->
+		<!-- <p><small>{{ blog_post.email }}</small></p> -->
+	</div>
+</section>
+{% endblock %}
+
+{% block breadcrumb_wrapper %}
+{% endblock %}
+
+{% block main %}
+
+	<div class="doc-content">
+	{% block blog_post_main%}
+		{{ block.super }}
+		
+		{% block blog_post_list_post_title %}{% endblock %}
+		{% block blog_post_list_post_content %}{% endblock %}
+
+		{% block blog_post_detail_content %}
+		{% editable blog_post.content %}
+		{{ blog_post.content|richtext_filters|safe }}
+		{% endeditable %}
+		{% endblock %}
+		
+		{% block read_more%}
+		{% endblock %}
+	{% endblock %}
 	</div>
 
-	<script type="text/javascript">
+{% block blog_post_detail_keywords %}
+{% keywords_for blog_post as tags %}
+{% if tags %}
+{% spaceless %}
+<ul class="list-inline tags">
+    <li>{% trans "Tags" %}:</li>
+    {% for tag in tags %}
+    <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
+    {% endfor %}
+</ul>
+{% endspaceless %}
+{% endif %}
+{% endblock %}
 
-	$( function () {
-		outline_parser();
-	});
+{% block blog_post_detail_rating %}
+<div class="panel panel-default rating">
+    <div class="panel-body">
+    {% rating_for blog_post %}
+    </div>
+</div>
+{% endblock %}
 
-	function outline_parser () {
-		$(".pin_top").pin();
-		$(".doc-toc").tocify({
-			'context'         : ".doc-content",
-			'selectors'       : "h1,h2",
-			'showEffectSpeed' : "fast",
-			'hideEffectSpeed' : "fast",
-			'smoothScroll'    : false,
-			'highlightOffset' : 10,
-		});
-	}
+{% block blog_post_detail_sharebuttons %}
+{% set_short_url_for blog_post %}
 
-	</script>
+<div class="bottom-article">
+		<ul class="meta-post">
+		<li>Share</li>
+		<li><a class="" target="_blank" href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}"><strong><i class="fa fa-twitter"></i> </strong></a></li>
+		<li><a class="" target="_blank" href="http://facebook.com/sharer.php?u={{ request.build_absolute_uri }}&amp;t={{ blog_post.title|urlencode }}"><i class="fa fa-facebook"></i></a>
+
+		</ul>
+		
+	</div>
+
+
+{% endblock %}
+
+{% block blog_post_previous_next %}
+<ul class="pager">
+{% with blog_post.get_previous_by_publish_date as previous %}
+{% if previous %}
+<li class="previous">
+    <a href="{{ previous.get_absolute_url }}"><i class="fa fa-arrow-left"></i> {{ previous }}</a>
+</li>
+{% endif %}
+{% endwith %}
+{% with blog_post.get_next_by_publish_date as next %}
+{% if next %}
+<li class="next">
+    <a href="{{ next.get_absolute_url }}">{{ next }} <i class="fa fa-arrow-right"></i>
+{% endif %}
+{% endwith %}
+</ul>
+{% endblock %}
+
+{% block blog_post_detail_related_posts %}
+{% if blog_post.related_posts.all %}
+<div id="related-posts">
+<h3>{% trans 'Related posts' %}</h3>
+<ul class="list-unstyled">
+{% for post in blog_post.related_posts.all %}
+     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block blog_post_detail_comments %}
+{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+{% endblock %}
 
 {% endblock %}

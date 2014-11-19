@@ -1,40 +1,23 @@
 {% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
 
-{% comment %}
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
 
-block:
-	# header @ base.html
-	title  @ base.html
-	body   @ base.html
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
 
-sqlite> .schema pages_page
-CREATE TABLE "pages_page" (
-    "id" integer NOT NULL PRIMARY KEY,
-    "keywords_string" varchar(500) NOT NULL,
-    "site_id" integer NOT NULL REFERENCES "django_site" ("id"),
-    "title" varchar(500) NOT NULL,
-    "slug" varchar(2000),
-    "_meta_title" varchar(500),
-    "description" text NOT NULL,
-    "gen_description" bool NOT NULL,
-    "created" datetime,
-    "updated" datetime,
-    "status" integer NOT NULL,
-    "publish_date" datetime,
-    "expiry_date" datetime,
-    "short_url" varchar(200),
-    "in_sitemap" bool NOT NULL,
-    "_order" integer,
-    "parent_id" integer REFERENCES "pages_page" ("id"),
-    "in_menus" varchar(100),
-    "titles" varchar(1000),
-    "content_model" varchar(50),
-    "login_required" bool NOT NULL
-);
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
 
-{% endcomment %}
-
-{% block header %}
-    {% include "component/header.html" %}
+{% block title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
 {% endblock %}
 
+{% block main %}
+{% endblock %}

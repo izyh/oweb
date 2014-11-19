@@ -1,55 +1,33 @@
 {% extends "pages/page.html" %}
 
-{% comment %}
+{% load mezzanine_tags %}
 
-block:
-	# header    @ base.html
-	# extra_js  @ base.html
-	# extra_css @ base.html
-	# title  @ pages/page.html @ base.html
-	# body   @ pages/page.html @ base.html
-
-sqlite> .schema pages_richtextpage
-CREATE TABLE "pages_richtextpage" (
-    "page_ptr_id" integer NOT NULL PRIMARY KEY REFERENCES "pages_page" ("id"),
-    "content" text NOT NULL
-);
-
-{% endcomment %}
-
-{% load mezzanine_tags staticfiles %}
-
-
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/jquery.pin.js' %}"></script>
-<script src="{% static 'js/doc.js' %}"></script>
-<script src="{% static 'js/spage.js' %}"></script>
-{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/spage.css' %}">
-<link rel="stylesheet" href="{% static 'css/doc.css' %}">
-{% endblock %}
-
-{% block body %}
-<!-- <div class="page-jumbotron">
+{% block title_wrapper %}
+<section class="callaction" style="padding-top:0">
 	<div class="container">
-		<h1>{{ page.title }}</h1>
-		<p>{{ page.description }}</p>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="big-cta">
+					<div class="cta-text"></div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div> -->
+</section>
+{% endblock %}
 
-<div class="container-flup doc-content" style="margin-top:0">
-	<!-- Main content -->
-	<div class="row" style="margin-left:0; margin-right:0">{{ page.richtextpage.content | richtext_filters | safe }}</div>
+{% block left_wrapper %}
+{% endblock %}
+
+<div class="col-md-{% block main_col_size %}12{% endblock %}">
+{% block main %}{{ block.super }}
+
+{% editable page.richtextpage.content %}
+{{ page.richtextpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+{% endblock %}
 </div>
 
-<script type="text/javascript">
-
-	$( function () {
-		spage_jumbotron_bg("/");
-	});
-	</script>
+{% block right_wrapper %}
 {% endblock %}

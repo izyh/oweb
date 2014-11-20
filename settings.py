@@ -88,7 +88,7 @@ USE_SOUTH = True
 # In the format (('Full Name', 'email@example.com'),
 #                ('Full Name', 'anotheremail@example.com'))
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Concefly', 'h.wenjian@openrpi.org'),
 )
 MANAGERS = ADMINS
 
@@ -111,7 +111,7 @@ USE_TZ = True
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 #LANGUAGE_CODE = "en"
-LANGUAGE_CODE = "zh_CN"
+LANGUAGE_CODE = "en"
 
 # Supported languages
 _ = lambda s: s
@@ -234,6 +234,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
+    # "moderna",
     "openrpi",
 	"accounts",
     "django.contrib.admin",
@@ -385,3 +386,5 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER='message@openrpi.org'
 EMAIL_HOST_PASSWORD='openrpiorg2014'
 DEFAULT_FROM_EMAIL='message@openrpi.org'
+
+BLOG_USE_FEATURED_IMAGE = True

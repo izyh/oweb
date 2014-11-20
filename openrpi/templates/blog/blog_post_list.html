@@ -91,9 +91,11 @@
 	</div>
 
 {% block blog_post_list_post_content %}
-{% editable blog_post.content %}
-{{ blog_post.description_from_content|safe }}
-{% endeditable %}
+<div style="border-left: 5px solid #E6E6E6; padding-left: 10px;">
+	{% editable blog_post.description %}
+	{{ blog_post.description }}
+	{% endeditable %}
+</div>
 {% endblock %}
     {% block blog_post_list_post_metainfo %}
 	<div class="bottom-article">

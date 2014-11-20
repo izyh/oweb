@@ -69,7 +69,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-  {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
+  <a class="navbar-brand" href="/"><img class="img-responsive" src="{% static 'img/logo-small.png' %}" alt="openRPi" width="80px" /></a>
     
 </div>
 <div class="navbar-collapse collapse">
@@ -163,6 +163,13 @@
 {% endblock %}
 
 {% block footer %}
+
+<style type="text/css">
+	#sub-footer span.glyphicon {
+		color: #7B7B7B;
+	}
+</style>
+
 <footer>
 <div class="container">
 {% page_menu "pages/menus/footer.html" %}

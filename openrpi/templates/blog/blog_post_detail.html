@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block title_wrapper %}
-<section class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;">
+<section class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;margin-bottom: 0px;">
 	<div class="container">
 		<h1 style="color:white;font-size:50px">{{ blog_post.title }}</h1>
 		<p style="color:#bfd2e3">{{ blog_post.description }}</p>
@@ -38,15 +38,15 @@
 
 {% block main %}
 
-	<div class="doc-content">
 	{% block blog_post_main%}
 		{{ block.super }}
 		
 		{% block blog_post_list_post_title %}{% endblock %}
 		{% block blog_post_list_post_content %}{% endblock %}
+		{% block blog_post_list_post_metainfo %}{% endblock %}
 
 		{% block blog_post_detail_content %}
-			<div id="content_for_toc">
+			<div id="content_for_toc" class="doc-content">
 				{% editable blog_post.content %}
 				{{ blog_post.content|richtext_filters|safe }}
 				{% endeditable %}
@@ -55,34 +55,32 @@
 		
 		{% block read_more%}{% endblock %}
 	{% endblock %}
-	</div>
 
 {% block blog_post_detail_keywords %}
 {% keywords_for blog_post as tags %}
 {% if tags %}
 {% spaceless %}
-<ul class="list-inline tags">
+<!-- <ul class="list-inline tags">
     <li>{% trans "Tags" %}:</li>
     {% for tag in tags %}
     <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
     {% endfor %}
-</ul>
+</ul> -->
 {% endspaceless %}
 {% endif %}
 {% endblock %}
 
 {% block blog_post_detail_rating %}
-<div class="panel panel-default rating">
+<!-- <div class="panel panel-default rating">
     <div class="panel-body">
     {% rating_for blog_post %}
     </div>
-</div>
+</div> -->
 {% endblock %}
 
 {% block blog_post_detail_sharebuttons %}
 {% set_short_url_for blog_post %}
-
-<div class="bottom-article">
+<!-- <div class="bottom-article">
 		<ul class="meta-post">
 		<li>Share</li>
 		<li><a class="" target="_blank" href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}"><strong><i class="fa fa-twitter"></i> </strong></a></li>
@@ -90,11 +88,11 @@
 
 		</ul>
 		
-	</div>
+	</div> -->
 {% endblock %}
 
 {% block blog_post_previous_next %}
-<ul class="pager">
+<!-- <ul class="pager">
 {% with blog_post.get_previous_by_publish_date as previous %}
 {% if previous %}
 <li class="previous">
@@ -105,10 +103,10 @@
 {% with blog_post.get_next_by_publish_date as next %}
 {% if next %}
 <li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} <i class="fa fa-arrow-right"></i>
+	<a href="{{ next.get_absolute_url }}">{{ next }} <i class="fa fa-arrow-right"></i></a>
 {% endif %}
 {% endwith %}
-</ul>
+</ul> -->
 {% endblock %}
 
 {% block blog_post_detail_related_posts %}
@@ -125,7 +123,7 @@
 {% endblock %}
 
 {% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+<!-- {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %} -->
 {% endblock %}
 
 {% endblock %}
@@ -142,21 +140,39 @@
 	</div>
 </div> -->
 <div class="pin_top" style="margin-top:20px">
-	<div class="doc-toc">
+	<div class="doc-toc"></div>
 </div>
 <script>
-$(function () {
-	// $('#right_panel').tab();
-	$(".doc-toc").tocify({
-		'context'         : "#content_for_toc",
-		'selectors'       : "h1,h2",
-		'showEffectSpeed' : "fast",
-		'hideEffectSpeed' : "fast",
-		'smoothScroll'    : false,
-		'highlightOffset' : 10,
-		'extendPage'      : false,
-	});
-	$(".pin_top").pin();
-})
+$(".doc-toc").tocify({
+	'context'         : "#content_for_toc",
+	'selectors'       : "h1,h2",
+	'showEffectSpeed' : "fast",
+	'hideEffectSpeed' : "fast",
+	'smoothScroll'    : false,
+	'highlightOffset' : 10,
+	'extendPage'      : false,
+});
+$(".pin_top").pin();
 </script>
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo" style="
+padding-top: 40px;
+padding-bottom: 0px;
+margin-top: 100px;
+color: #FFF;
+text-align: center;
+border-top: 1px solid #e5e5e5;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            
+                <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
+                <p class="text-center small">专注于嵌入式入门与兴趣培养计划的开源组织</p>
+            
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}

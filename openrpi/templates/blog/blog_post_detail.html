@@ -38,22 +38,12 @@
 
 {% block main %}
 
-	{% block blog_post_main%}
-		{{ block.super }}
-		
-		{% block blog_post_list_post_title %}{% endblock %}
-		{% block blog_post_list_post_content %}{% endblock %}
-		{% block blog_post_list_post_metainfo %}{% endblock %}
-
-		{% block blog_post_detail_content %}
-			<div id="content_for_toc" class="doc-content">
-				{% editable blog_post.content %}
-				{{ blog_post.content|richtext_filters|safe }}
-				{% endeditable %}
-			</div>
-		{% endblock %}
-		
-		{% block read_more%}{% endblock %}
+	{% block blog_post_detail_content %}
+		<div id="content_for_toc" class="doc-content">
+			{% editable blog_post.content %}
+			{{ blog_post.content|richtext_filters|safe }}
+			{% endeditable %}
+		</div>
 	{% endblock %}
 
 {% block blog_post_detail_keywords %}
@@ -109,18 +99,32 @@
 </ul> -->
 {% endblock %}
 
-{% block blog_post_detail_related_posts %}
-{% if blog_post.related_posts.all %}
-<div id="related-posts">
-<h3>{% trans 'Related posts' %}</h3>
-<ul class="list-unstyled">
-{% for post in blog_post.related_posts.all %}
-     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+<hr/>
+<div class="row">
+	<div class="col-lg-3" style="border-right: solid; padding-right:20px">
+		{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+		{% block blog_post_list_post_featured_image %}
+		<a href="{{ blog_post.get_absolute_url }}">
+			<img class="img-rounded" src="{{ MEDIA_URL }}{{blog_post.featured_image}}">
+		</a>
+		{% endblock %}
+		{% endif %}
+	</div>
+	<div class="col-lg-7" style="padding-right:20px">
+		{% block blog_post_detail_related_posts %}
+		{% if blog_post.related_posts.all %}
+		<div id="related-posts">
+		<h3>{% trans 'Related posts' %}</h3>
+		<ul class="list-unstyled">
+		{% for post in blog_post.related_posts.all %}
+		     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+		{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		{% endblock %}
+	</div>
 </div>
-{% endif %}
-{% endblock %}
 
 {% block blog_post_detail_comments %}
 <!-- {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %} -->

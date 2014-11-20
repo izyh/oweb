@@ -76,7 +76,7 @@
 			<div class="post-heading">
 			{% block blog_post_list_post_title %}
 			{% editable blog_post.title %}
-			<h3><a class="_blank" href="{{ blog_post.get_absolute_url }}">{{ blog_post.title|add:" ›" }}</a></h3>
+			<h3><a target="_blank" href="{{ blog_post.get_absolute_url }}">{{ blog_post.title|add:" ›" }}</a></h3>
 			{% endeditable %}
 			{% endblock %}
 			</div>

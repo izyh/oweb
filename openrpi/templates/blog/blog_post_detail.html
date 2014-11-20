@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags staticfiles %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -11,6 +11,12 @@
 {% block meta_description %}{% metablock %}
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "js/jquery-ui.min.js" %}"></script>
+<script src="{% static "js/jquery.tocify.min.js" %}"></script>
+<script src="{% static "js/jquery.pin.js" %}"></script>
+{% endblock %}
 
 {% block title %}
 {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
@@ -40,13 +46,14 @@
 		{% block blog_post_list_post_content %}{% endblock %}
 
 		{% block blog_post_detail_content %}
-		{% editable blog_post.content %}
-		{{ blog_post.content|richtext_filters|safe }}
-		{% endeditable %}
+			<div id="content_for_toc">
+				{% editable blog_post.content %}
+				{{ blog_post.content|richtext_filters|safe }}
+				{% endeditable %}
+			</div>
 		{% endblock %}
 		
-		{% block read_more%}
-		{% endblock %}
+		{% block read_more%}{% endblock %}
 	{% endblock %}
 	</div>
 
@@ -84,8 +91,6 @@
 		</ul>
 		
 	</div>
-
-
 {% endblock %}
 
 {% block blog_post_previous_next %}
@@ -123,4 +128,35 @@
 {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
 {% endblock %}
 
+{% endblock %}
+
+{% block right_panel %}
+<!-- <div class="pin_top">
+	<ul id="right_panel" class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#toc_panel" data-toggle="tab">大纲</a></li>
+		<li role="presentation"><a href="#filter_panel" data-toggle="tab">分类</a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="toc_panel"><div class="doc-toc"></div></div>
+		<div role="tabpanel" class="tab-pane" id="filter_panel" style="overflow:auto;">{% include "blog/includes/filter_panel.html" %}</div>
+	</div>
+</div> -->
+<div class="pin_top" style="margin-top:20px">
+	<div class="doc-toc">
+</div>
+<script>
+$(function () {
+	// $('#right_panel').tab();
+	$(".doc-toc").tocify({
+		'context'         : "#content_for_toc",
+		'selectors'       : "h1,h2",
+		'showEffectSpeed' : "fast",
+		'hideEffectSpeed' : "fast",
+		'smoothScroll'    : false,
+		'highlightOffset' : 10,
+		'extendPage'      : false,
+	});
+	$(".pin_top").pin();
+})
+</script>
 {% endblock %}

@@ -4,7 +4,7 @@
 ==========================================*/
 
 body {
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   line-height: 165%;
 }
 h1 {
@@ -212,9 +212,6 @@ img.pull-left {
 }
 .tag-weight-4 {
   font-size: 180%;
-}
-.recent-posts img {
-    margin: 2px;
 }
 
 /*========================================

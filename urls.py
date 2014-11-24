@@ -4,6 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
+from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
 
 
@@ -64,6 +65,7 @@ urlpatterns += patterns('',
     # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
     # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
     # WILL NEVER BE MATCHED!
+    ("^%s" % settings.BLOG_SLUG.rstrip("/"), include("blog_extra.urls")),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want

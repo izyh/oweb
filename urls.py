@@ -57,15 +57,13 @@ urlpatterns += patterns('',
     # ``settings.py`` module, and delete the blog page object from the
     # page tree in the admin if it was installed.
 
-    # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
-
     # MEZZANINE'S URLS
     # ----------------
     # ADD YOUR OWN URLPATTERNS *ABOVE* THE LINE BELOW.
     # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
     # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
     # WILL NEVER BE MATCHED!
-    ("^%s" % settings.BLOG_SLUG.rstrip("/"), include("blog_extra.urls")),
+    # ("^%s" % settings.BLOG_SLUG.rstrip("/"), include("blog_extra.urls")),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want

@@ -110,15 +110,8 @@ USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = "en"
+# LANGUAGE_CODE = "en"
 LANGUAGE_CODE = "zh_CN"
-
-# Supported languages
-_ = lambda s: s
-LANGUAGES = (
-    # ('en', _('English')),
-    ('zh_CN', _('Chinese')),
-)
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
@@ -132,7 +125,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-#USE_I18N = False
+# USE_I18N = False
 USE_I18N = True
 
 # Tuple of IP addresses, as strings, that:

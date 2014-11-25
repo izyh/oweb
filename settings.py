@@ -52,16 +52,16 @@ from __future__ import absolute_import, unicode_literals
 # ``django.models.db.`` can be omitted for regular Django model fields.
 #
 # EXTRA_MODEL_FIELDS = (
-#     (
-#         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
-#         # Dotted path to field class.
-#         "somelib.fields.ImageField",
-#         # Positional args for field class.
-#         ("Image",),
-#         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
-#     ),
+#     # (
+#     #     # Dotted path to field.
+#     #     "mezzanine.blog.models.BlogPost.image",
+#     #     # Dotted path to field class.
+#     #     "somelib.fields.ImageField",
+#     #     # Positional args for field class.
+#     #     ("Image",),
+#     #     # Keyword args for field class.
+#     #     {"blank": True, "upload_to": "blog"},
+#     # ),
 #     # Example of adding a field to *all* of Mezzanine's content types:
 #     (
 #         "mezzanine.pages.models.Page.another_field",
@@ -73,7 +73,7 @@ from __future__ import absolute_import, unicode_literals
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the south application will be automatically added to the
 # INSTALLED_APPS setting.
@@ -103,7 +103,7 @@ ALLOWED_HOSTS = []
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "Asia/Shanghai"
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
@@ -282,7 +282,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
+    # "django.middleware.locale.LocaleMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

@@ -113,11 +113,11 @@
 	<div class="col-lg-7" style="padding-right:20px">
 		{% block blog_post_detail_related_posts %}
 		
-		{% if next_blog_posts %}
+		{% if blog_post.related_posts.all %}
 		<div id="related-posts">
-		<h3>接下来的目标</h3>
+		<h3>{% trans 'Related posts' %}</h3>
 		<ul class="list-unstyled" style="margin-left: 20px;">
-		{% for post in next_blog_posts %}
+		{% for post in blog_post.related_posts.all %}
 		     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
 		{% endfor %}
 		</ul>

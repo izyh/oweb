@@ -47,6 +47,9 @@
 	-moz-box-shadow: 10px 10px 5px rgb(170, 170, 170); /* old Firefox */
     box-shadow: 2px 2px 5px rgb(170, 170, 170);
 }
+a[target=_blank]:after {
+    content: " ›"
+}
 </style>
 <div class="col-lg-12  col-lg-offset-0">
 	<!-- desc -->
@@ -143,25 +146,31 @@
 							</div>
 						</div>
 					</div>
-					<!-- many feature images -->
+					<!-- many app images -->
 					<div class="row">
 						<!-- funny text -->
 						<div class="col-lg-4" style="padding-right:35px">
 							<img src="{% static 'media/uploads/otft22/.thumbnails/funny-text.jpg/funny-text-400x247.jpg' %}" alt="" class="img-responsive shadow">
-							<h2>多彩文字</h2>
+							<h2><a target="_blank" href="/blog/树莓派小尺寸tft的应用/#多彩文字">多彩文字</a></h2>
 							<p>使用Linux命令行下一些有趣的工具，在树莓派屏幕上显示多彩文字。你甚至能在这个小屏幕上开火车。</p>
 						</div>
 						<!-- monitor -->
 						<div class="col-lg-4" style="padding-left:25px;padding-right:25px">
 							<img src="{% static 'media/uploads/otft22/.thumbnails/monitor.jpg/monitor-400x247.jpg' %}" alt="" class="img-responsive shadow">
-							<h2>系统监控</h2>
+							<h2><a target="_blank" href="/blog/树莓派小尺寸tft的应用/#系统资源概览">系统监控</a></h2>
 							<p>monitor.py是一个用pygame库编写的系统资源监视脚本，它运行在树莓派上，而且非常简短。借助它，树莓派的系统资源消耗一目了然。</p>
 						</div>
 						<!-- video -->
 						<div class="col-lg-4" style="padding-left:35px">
 							<img src="{% static 'media/uploads/otft22/video.jpg' %}" alt="" class="img-responsive shadow">
-							<h2>播放视频</h2>
+							<h2><a target="_blank" href="/blog/树莓派小尺寸tft的应用/#视频播放器">播放视频</a></h2>
 							<p>otft22使用mplayer播放视频效果。mplayer是一款基于命令行的开源多媒体播放器，不需启动pi桌面即可在树莓派上播放视频。</p>
+						</div>
+					</div>
+					<!-- more app -->
+					<div class="row">
+						<div class="col-lg-12">
+							<p class="text-center"><a target="_blank" href="/blog/树莓派小尺寸tft的应用/"><em>更多小尺寸TFT的应用</em></a></p>
 						</div>
 					</div>
 				</div>

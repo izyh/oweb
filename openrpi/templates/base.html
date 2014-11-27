@@ -73,7 +73,10 @@
 						<img class="img-responsive" src="{% static 'img/logo-small.png' %}" alt="openRPi" width="80px" />	
 					</a>
 				</div>
-				<div class="navbar-collapse collapse navbar-left">{% page_menu "pages/menus/dropdown.html" %}</div>
+				<div class="navbar-collapse collapse">
+					{% search_form "all" %}
+					{% page_menu "pages/menus/dropdown.html" %}
+				</div>
 			</div>
 		</div>
 	</header>

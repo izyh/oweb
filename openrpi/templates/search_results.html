@@ -23,20 +23,21 @@
 
 {% block main %}
 
+<p style="margin-bottom: 40px;">
 {% if results.paginator.count == 0 %}
-<p>
 在 <strong>{{ search_type }}</strong> 中未能搜索到 <strong>{{ query }}</strong>
 {% else %}
 {% with start=results.start_index end=results.end_index total=results.paginator.count %}
-为你搜索到 <strong>{{ total }}</strong> 个结果：{{ start }} 到 {{ end }} 
+在 <strong>{{ search_type }}</strong> 中搜索到 <strong>{{ total }}</strong> 个结果：{{ start }} 到 {{ end }}
 {% endwith %}
-</p>
 {% endif %}
+</p>
 
 <div id="search-results">
     {% for result in results.object_list %}
     <div style="border-left: 2px solid darkgray;
-padding-left: 20px;">
+padding-left: 20px;
+margin-bottom: 30px;">
     	<h5>{{ forloop.counter0|add:results.start_index }})
         <a target="_blank" href="{{ result.get_absolute_url }}">{{ result }}</a></h5>
 	    <p>{{ result.description|truncatewords_html:20|safe }}</p>

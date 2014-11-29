@@ -230,6 +230,7 @@ INSTALLED_APPS = (
     # "moderna",
     "openrpi",
 	"accounts",
+	"learningTopology",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

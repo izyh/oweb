@@ -15,26 +15,34 @@
 <li class="active">{% trans "Search Results" %}</li>
 {% endblock %}
 
+{% block left_wrapper %}
+{% endblock %}
+
+{% block main_col_size %}8{% endblock %}
+{% block main_class %}col-md-offset-1{% endblock %}
+
 {% block main %}
 
+<p style="margin-bottom: 40px;">
 {% if results.paginator.count == 0 %}
-<p>
-{% blocktrans %}
-No results were found in {{ search_type }} matching your query: {{ query }}
-{% endblocktrans %}
+在 <strong>{{ search_type }}</strong> 中未能搜索到 <strong>{{ query }}</strong>
 {% else %}
-{% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
-Showing {{ start }} to {{ end }} of {{ total }} results in {{ search_type }} matching your query: {{ query }}
-{% endblocktrans %}
+{% with start=results.start_index end=results.end_index total=results.paginator.count %}
+在 <strong>{{ search_type }}</strong> 中搜索到 <strong>{{ total }}</strong> 个结果：{{ start }} 到 {{ end }}
+{% endwith %}
 {% endif %}
 </p>
 
 <div id="search-results">
     {% for result in results.object_list %}
-    <h5>{{ forloop.counter0|add:results.start_index }})
-        <a href="{{ result.get_absolute_url }}">{{ result }}</a></h5>
-    <p>{{ result.description|truncatewords_html:20|safe }}</p>
-    <a href="{{ result.get_absolute_url }}">{% trans "read more" %}</a>
+    <div style="border-left: 2px solid darkgray;
+padding-left: 20px;
+margin-bottom: 30px;">
+    	<h5>{{ forloop.counter0|add:results.start_index }})
+        <a target="_blank" href="{{ result.get_absolute_url }}">{{ result }}</a></h5>
+	    <p>{{ result.description|truncatewords_html:20|safe }}</p>
+	    <a target="_blank" href="{{ result.get_absolute_url }}">{% trans "read more" %}</a>
+    </div>
     {% endfor %}
 </div>
 

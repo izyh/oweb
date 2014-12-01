@@ -1,25 +1,20 @@
 /********************** overwrite */
 .navbar-brand {
     color: #222;
-	
-    text-transform: inherit; 
+    text-transform: inherit;
     font-size: 24px;
     font-weight: 700;
     line-height: 1em;
-	
     letter-spacing: -1px;
     margin-top: 30px;
     padding: 15px;
 }
-
-header ul.nav li a {    
+header ul.nav li a {
     text-transform: inherit;
 }
-
-header ul.nav li ul li a {  
+header ul.nav li ul li a {
     text-transform: inherit;
 }
-
 header .nav li a:hover,
 header .nav li a:focus,
 header .nav li.active a,
@@ -27,12 +22,32 @@ header .nav li.active a:hover,
 header .nav li a.dropdown-toggle:hover,
 header .nav li a.dropdown-toggle:focus,
 header .nav li.active ul.dropdown-menu li a:hover,
-header .nav li.active ul.dropdown-menu li.active a{
-     color:#333; 
+header .nav li.active ul.dropdown-menu li.active a {
+    color: #333;
+}
+header .navbar-collapse  ul.navbar-nav {
+    float: left;
+}
+header .navbar-form {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    margin-left: -1px;
+    border-top-left-radius: 0;
+}
+.navbar .nav > li > a {
+  font-size: 14px;
+}
+header .nav .caret {
+    border-bottom-color: lightgray;
+    border-top-color: lightgray;
 }
 
 /*************************** body */
-
 body p {
     font-size: 16px;
     line-height: 1.75;
@@ -115,7 +130,8 @@ body p {
     display: none;
 }
 .doc-toc .tocify-subheader li {
-    /*font-size: 12px;*/
+    /* font-size: 12px;
+    */
     font-size: 80%
 }
 .doc-toc .tocify-subheader .tocify-subheader {

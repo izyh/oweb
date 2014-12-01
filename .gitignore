@@ -53,6 +53,8 @@ docs/_build/
 # PyBuilder
 target/
 
-local_settings.py
+/local_settings.py
 /static/
 /*.db
+
+!/static/media/

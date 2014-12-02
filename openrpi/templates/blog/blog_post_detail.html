@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags staticfiles %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -12,65 +12,65 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
-{% block extra_js %}
-<script src="{% static "js/jquery-ui.min.js" %}"></script>
-<script src="{% static "js/jquery.tocify.min.js" %}"></script>
-<script src="{% static "js/jquery.pin.js" %}"></script>
-{% endblock %}
-
 {% block title %}
 {% editable blog_post.title %}{{ blog_post.title }}{% endeditable %}
 {% endblock %}
 
-{% block title_wrapper %}
-<section class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;margin-bottom: 0px;">
-	<div class="container">
-		<h1 style="color:white;font-size:50px">{{ blog_post.title }}</h1>
-		<p style="color:#bfd2e3">{{ blog_post.description }}</p>
-		<!-- <p style="color:#bfd2e3">{{ blog_post.user }}</p> -->
-		<!-- <p><small>{{ blog_post.email }}</small></p> -->
-	</div>
-</section>
+{% block breadcrumb_menu %}
+{{ block.super }}
+
 {% endblock %}
 
-{% block breadcrumb_wrapper %}
+{% block blog_post_list_post_title %}
+{% editable blog_post.title %}
+<h3><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></h3>
+{% endeditable %}
 {% endblock %}
 
 {% block main %}
 
-	{% block blog_post_detail_content %}
-		<div id="content_for_toc" class="doc-content">
-			{% editable blog_post.content %}
-			{{ blog_post.content|richtext_filters|safe }}
-			{% endeditable %}
-		</div>
-	{% endblock %}
+	{% block blog_post_main%}
+		{{ block.super }}
+		
+		{% block blog_post_list_post_content %}
+			
+		{% endblock %}
+		{% block blog_post_detail_content %}
+		{% editable blog_post.content %}
+		{{ blog_post.content|richtext_filters|safe }}
+		{% endeditable %}
+		{% endblock %}
+		
+		{% block read_more%}
+		{% endblock %}
+	{% endblock %}	
 
 {% block blog_post_detail_keywords %}
 {% keywords_for blog_post as tags %}
 {% if tags %}
 {% spaceless %}
-<!-- <ul class="list-inline tags">
+<ul class="list-inline tags">
     <li>{% trans "Tags" %}:</li>
     {% for tag in tags %}
     <li><a href="{% url "blog_post_list_tag" tag.slug %}">{{ tag }}</a></li>
     {% endfor %}
-</ul> -->
+</ul>
 {% endspaceless %}
 {% endif %}
 {% endblock %}
 
 {% block blog_post_detail_rating %}
-<!-- <div class="panel panel-default rating">
+<div class="panel panel-default rating">
     <div class="panel-body">
     {% rating_for blog_post %}
     </div>
-</div> -->
+</div>
 {% endblock %}
 
 {% block blog_post_detail_sharebuttons %}
 {% set_short_url_for blog_post %}
-<!-- <div class="bottom-article">
+
+<div class="bottom-article">
 		<ul class="meta-post">
 		<li>Share</li>
 		<li><a class="" target="_blank" href="http://twitter.com/home?status={{ blog_post.short_url|urlencode }}%20{{ blog_post.title|urlencode }}"><strong><i class="fa fa-twitter"></i> </strong></a></li>
@@ -78,11 +78,13 @@
 
 		</ul>
 		
-	</div> -->
+	</div>
+
+
 {% endblock %}
 
 {% block blog_post_previous_next %}
-<!-- <ul class="pager">
+<ul class="pager">
 {% with blog_post.get_previous_by_publish_date as previous %}
 {% if previous %}
 <li class="previous">
@@ -96,89 +98,24 @@
 	<a href="{{ next.get_absolute_url }}">{{ next }} <i class="fa fa-arrow-right"></i></a>
 {% endif %}
 {% endwith %}
-</ul> -->
+</ul>
 {% endblock %}
 
-<hr/>
-<div class="row">
-	<div class="col-lg-3" style="border-right: solid; padding-right:20px">
-		{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-		{% block blog_post_list_post_featured_image %}
-		<a href="{{ blog_post.get_absolute_url }}">
-			<img class="img-rounded" src="{{ MEDIA_URL }}{{blog_post.featured_image}}">
-		</a>
-		{% endblock %}
-		{% endif %}
-	</div>
-	<div class="col-lg-7" style="padding-right:20px">
-		{% block blog_post_detail_related_posts %}
-		
-		{% if blog_post.related_posts.all %}
-		<div id="related-posts">
-		<h3>{% trans 'Related posts' %}</h3>
-		<ul class="list-unstyled" style="margin-left: 20px;">
-		{% for post in blog_post.related_posts.all %}
-		     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-		{% endfor %}
-		</ul>
-		</div>
-		{% endif %}
-		
-		{% endblock %}
-	</div>
+{% block blog_post_detail_related_posts %}
+{% if blog_post.related_posts.all %}
+<div id="related-posts">
+<h3>{% trans 'Related posts' %}</h3>
+<ul class="list-unstyled">
+{% for post in blog_post.related_posts.all %}
+     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+{% endfor %}
+</ul>
 </div>
+{% endif %}
+{% endblock %}
 
 {% block blog_post_detail_comments %}
-<!-- {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %} -->
+{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
 {% endblock %}
 
-{% endblock %}
-
-{% block right_panel %}
-<!-- <div class="pin_top">
-	<ul id="right_panel" class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#toc_panel" data-toggle="tab">大纲</a></li>
-		<li role="presentation"><a href="#filter_panel" data-toggle="tab">分类</a></li>
-	</ul>
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="toc_panel"><div class="doc-toc"></div></div>
-		<div role="tabpanel" class="tab-pane" id="filter_panel" style="overflow:auto;">{% include "blog/includes/filter_panel.html" %}</div>
-	</div>
-</div> -->
-<div class="pin_top" style="margin-top:20px">
-	<div class="doc-toc"></div>
-</div>
-<script>
-$(".doc-toc").tocify({
-	'context'         : "#content_for_toc",
-	'selectors'       : "h1,h2",
-	'showEffectSpeed' : "fast",
-	'hideEffectSpeed' : "fast",
-	'smoothScroll'    : false,
-	'highlightOffset' : 10,
-	'extendPage'      : false,
-});
-$(".pin_top").pin();
-</script>
-{% endblock %}
-
-{% block footer %}
-<footer role="contentinfo" style="
-padding-top: 40px;
-padding-bottom: 0px;
-margin-top: 100px;
-color: #FFF;
-text-align: center;
-border-top: 1px solid #e5e5e5;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            
-                <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
-                <p class="text-center small">专注于嵌入式入门与兴趣培养计划的开源组织</p>
-            
-            </div>
-        </div>
-    </div>
-</footer>
 {% endblock %}

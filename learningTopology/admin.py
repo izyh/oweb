@@ -18,12 +18,12 @@ register_setting(
 )
 """
 class NodeAdmin(admin.ModelAdmin):
-	list_display = ["nodeName"]
-	filter_horizontal = ("lastNodeList",)
+	list_display = ["title","nextNode","user"]
+	filter_horizontal = ("neighbourNodes",)
 	#raw_id_fields = ('nextNode',)
 
 class PathAdmin(admin.ModelAdmin):
-	list_display = ["pathName", "startNode", "endNode", "pathLength", "pathBody"]
+	list_display = ["title", "admin_thumb","startNode", "endNode", "pathLength", "user","admin_link"]
 
 admin.site.register(Node, NodeAdmin)
 admin.site.register(Path, PathAdmin)

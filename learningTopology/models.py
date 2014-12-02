@@ -2,39 +2,50 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
-from mezzanine import blog
+from mezzanine.core.models import Displayable, Ownable, RichText, Slugged
+from mezzanine.core.fields import FileField
+from mezzanine.utils.models import AdminThumbMixin, upload_to
+from mezzanine.generic.fields import CommentsField, RatingField
+
+from django.utils.translation import ugettext_lazy as _
+
 # Create your models here.
-class Node(models.Model):
-	nodeName = models.CharField(max_length=50, verbose_name=u"节点名称", blank=True)
-	lastNodeList = models.ManyToManyField("self", verbose_name=u"上级节点列表", blank=True, symmetrical=False)
+class Node(Displayable, Ownable, RichText, AdminThumbMixin):
+	neighbourNodes = models.ManyToManyField("self", verbose_name=u"邻居节点列表", blank=True, symmetrical=True)
 	nextNode = models.ForeignKey("self", related_name="+", verbose_name=u"下级节点", blank=True, null=True)
 	class Meta:
 		verbose_name = u"节点"
 		verbose_name_plural = u"节点"
 		ordering = ("id",)
-	def __unicode__(self):
-		return self.nodeName
+	def all_direct_previous_nodes(self):
+		return self.neighbourNodes.exclude(id=self.nextNode.id).order_by("title")
 	def all_next_nodes(self):
 		next_node = self.nextNode
 		while next_node:
 			yield next_node
 			next_node = next_node.nextNode
+	# def get_absolute_url(self):
+	# 	return "%s?n=%d" %(reverse("learn_path_detail"),self.id)
 
-class Path(models.Model):
-	pathName = models.CharField(max_length=50, verbose_name=u"路径名称", blank=True)
-	startNode = models.ForeignKey("Node", verbose_name=u"路径起点", related_name="pathstart", blank=True)
-	endNode = models.ForeignKey("Node", verbose_name=u"路径终点", related_name="pathend", blank=True)
+class Path(Displayable, Ownable, RichText, AdminThumbMixin):
+	startNode  = models.ForeignKey("Node", verbose_name=u"路径起点", related_name="pathstart", blank=True)
+	endNode    = models.ForeignKey("Node", verbose_name=u"路径终点", related_name="pathend", blank=True)
 	pathLength = models.DecimalField(max_digits=6, decimal_places=2, verbose_name=u"时间长度", blank=True)
-	pathLead = models.TextField(verbose_name=u"路径指导", blank=True)
-	pathBody = models.ForeignKey("blog.BlogPost", verbose_name=u"路径主体", related_name="pathbody", blank=True)
+	rating     = RatingField(verbose_name=_("Rating"))
+	featuredImage = FileField(
+		verbose_name = _("Featured Image"),
+		upload_to    = upload_to("learnTopology.Path.featuredImage", "blog"),
+		format       = "Image", 
+		max_length   = 255, 
+		null         = True,
+		blank        = True)
+	admin_thumb_field = "featuredImage"
 	class Meta:
 		verbose_name = u"路径"
 		verbose_name_plural = u"路径"
 		ordering = ("id",)
-	def __unicode__(self):
-		return self.pathName
 	def all_direct_previous_paths(self):
-		pnodes = self.startNode.lastNodeList.order_by("nodeName")
+		pnodes = self.startNode.all_direct_previous_nodes()
 		for pnode in pnodes:
 			ppaths = Path.objects.filter(startNode=pnode,endNode=self.startNode)
 			if len(ppaths) == 0:

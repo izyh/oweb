@@ -56,5 +56,6 @@ target/
 /local_settings.py
 /static/
 /*.db
+migrations
 
 !/static/media/

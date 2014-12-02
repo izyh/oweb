@@ -63,7 +63,7 @@ urlpatterns += patterns('',
     # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
     # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
     # WILL NEVER BE MATCHED!
-    # ("^%s" % settings.BLOG_SLUG.rstrip("/"), include("blog_extra.urls")),
+    ("^learn/", include("learningTopology.urls")),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want

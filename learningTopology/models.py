@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.db import models
+from django.core.urlresolvers import reverse
+
 from mezzanine import blog
 # Create your models here.
 class Node(models.Model):
@@ -12,6 +14,11 @@ class Node(models.Model):
 		ordering = ("id",)
 	def __unicode__(self):
 		return self.nodeName
+	def all_next_nodes(self):
+		next_node = self.nextNode
+		while next_node:
+			yield next_node
+			next_node = next_node.nextNode
 
 class Path(models.Model):
 	pathName = models.CharField(max_length=50, verbose_name=u"路径名称", blank=True)
@@ -26,4 +33,16 @@ class Path(models.Model):
 		ordering = ("id",)
 	def __unicode__(self):
 		return self.pathName
-		
+	def all_next_paths(self):
+		e  = self.endNode
+		e0 = e.nextNode
+		while e and e0:
+			nps = Path.objects.filter(startNode=e,endNode=e0)
+			if len(nps) == 0:
+				yield None
+			else:
+				yield nps[0]
+			e  = e0
+			e0 = e.nextNode
+	def get_absolute_url(self):
+		return "%s?s=%d&e=%d" %(reverse("learn_path_detail"),self.startNode.id,self.endNode.id)

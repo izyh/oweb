@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags staticfiles %}
+
+{% block meta_title %}{{ path_detail.pathName }}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ path_detail.pathLead }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "js/jquery-ui.min.js" %}"></script>
+<script src="{% static "js/jquery.tocify.min.js" %}"></script>
+<script src="{% static "js/jquery.pin.js" %}"></script>
+{% endblock %}
+
+{% block title %}
+{% editable path_detail.pathName %}{{ path_detail.pathName }}{% endeditable %}
+{% endblock %}
+
+{% block title_wrapper %}
+<section class="jumbotron jumbotron-lblue jumbotron-textleft" style="padding-bottom: 30px;margin-bottom: 0px;">
+	<div class="container">
+		<h1 style="color:white;font-size:50px">{{ path_detail.pathName }}</h1>
+		<p style="color:#bfd2e3">{{ path_detail.pathLead }}</p>
+		<!-- <p style="color:#bfd2e3">{{ path_detail.user }}</p> -->
+		<!-- <p><small>{{ path_detail.email }}</small></p> -->
+	</div>
+</section>
+{% endblock %}
+
+{% block breadcrumb_wrapper %}
+{% endblock %}
+
+{% block left_wrapper %}
+{% endblock %}
+
+{% block main_col_size %}8{% endblock %}
+
+{% block main %}
+
+	{% block path_detail_content %}
+		<div id="content_for_toc" class="doc-content">
+			{% editable path_detail.pathBody.content %}
+			{{ path_detail.pathBody.content | richtext_filters|safe }}
+			{% endeditable %}
+		</div>
+	{% endblock %}
+
+{% block path_detail_detail_rating %}{% endblock %}
+
+<hr/>
+<div class="row">
+	<div class="col-lg-3" style="border-right: solid; padding-right:20px">
+		{% if settings.BLOG_USE_FEATURED_IMAGE and path_detail.pathBody.featured_image %}
+		{% block path_list_post_featured_image %}
+		<a href="{{ path_detail.pathBody.get_absolute_url }}">
+			<img class="img-rounded" src="{{ MEDIA_URL }}{{path_detail.pathBody.featured_image}}">
+		</a>
+		{% endblock %}
+		{% endif %}
+	</div>
+	<div class="col-lg-7" style="padding-right:20px">
+		{% block path_detail_next_targets %}
+		
+		{% if path_detail.all_next_paths %}
+		<div id="next-targets">
+		<h3>接下来的目标</h3>
+		<ul class="list-unstyled" style="margin-left: 20px;">
+		{% for path in path_detail.all_next_paths %}
+		     <li><a href="{{ path.get_absolute_url }}">{{ path.pathName }}</a></li>
+		{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		
+		{% endblock %}
+	</div>
+</div>
+
+{% endblock %}
+
+{% block right_panel %}
+<!-- <div class="pin_top">
+	<ul id="right_panel" class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#toc_panel" data-toggle="tab">大纲</a></li>
+		<li role="presentation"><a href="#filter_panel" data-toggle="tab">分类</a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="toc_panel"><div class="doc-toc"></div></div>
+		<div role="tabpanel" class="tab-pane" id="filter_panel" style="overflow:auto;">{% include "blog/includes/filter_panel.html" %}</div>
+	</div>
+</div> -->
+<div class="pin_top" style="margin-top:20px">
+	<div class="doc-toc"></div>
+</div>
+<script>
+$(".doc-toc").tocify({
+	'context'         : "#content_for_toc",
+	'selectors'       : "h1,h2",
+	'showEffectSpeed' : "fast",
+	'hideEffectSpeed' : "fast",
+	'smoothScroll'    : false,
+	'highlightOffset' : 10,
+	'extendPage'      : false,
+});
+$(".pin_top").pin();
+</script>
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo" style="
+padding-top: 40px;
+padding-bottom: 0px;
+margin-top: 100px;
+color: #FFF;
+text-align: center;
+border-top: 1px solid #e5e5e5;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            
+                <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
+                <p class="text-center small">专注于嵌入式入门与兴趣培养计划的开源组织</p>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

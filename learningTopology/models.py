@@ -33,6 +33,14 @@ class Path(models.Model):
 		ordering = ("id",)
 	def __unicode__(self):
 		return self.pathName
+	def all_direct_previous_paths(self):
+		pnodes = self.startNode.lastNodeList.order_by("nodeName")
+		for pnode in pnodes:
+			ppaths = Path.objects.filter(startNode=pnode,endNode=self.startNode)
+			if len(ppaths) == 0:
+				yield None
+			else:
+				yield ppaths[0]
 	def all_next_paths(self):
 		e  = self.endNode
 		e0 = e.nextNode

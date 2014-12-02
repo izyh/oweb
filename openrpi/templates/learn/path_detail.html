@@ -40,6 +40,10 @@
 
 	{% block path_detail_content %}
 		<div id="content_for_toc" class="doc-content">
+			{% editable path_detail.pathLength %}
+			<p>阅读这篇文章约花费 <strong>{{ path_detail.pathLength }}</strong> 分钟</p>
+			{% endeditable %}
+
 			{% editable path_detail.pathBody.content %}
 			{{ path_detail.pathBody.content | richtext_filters|safe }}
 			{% endeditable %}
@@ -50,29 +54,54 @@
 
 <hr/>
 <div class="row">
-	<div class="col-lg-3" style="border-right: solid; padding-right:20px">
-		{% if settings.BLOG_USE_FEATURED_IMAGE and path_detail.pathBody.featured_image %}
+	{% if settings.BLOG_USE_FEATURED_IMAGE and path_detail.pathBody.featured_image %}
+	<div class="col-lg-3">
 		{% block path_list_post_featured_image %}
 		<a href="{{ path_detail.pathBody.get_absolute_url }}">
 			<img class="img-rounded" src="{{ MEDIA_URL }}{{path_detail.pathBody.featured_image}}">
 		</a>
 		{% endblock %}
-		{% endif %}
 	</div>
-	<div class="col-lg-7" style="padding-right:20px">
-		{% block path_detail_next_targets %}
+	{% endif %}
+	
+	<div class="col-lg-7" style="margin-left: 15px; border-left: solid; padding-left:25px">
 		
+		{% block path_detail_previous_targets %}
+		{% if path_detail.all_direct_previous_paths %}
+		<div id="next-targets">
+		<h3>之前的目标</h3>
+		<ul class="list-unstyled" style="margin-left: 20px;">
+		{% for path in path_detail.all_direct_previous_paths %}
+		    <li><a href="{{ path.get_absolute_url }}">{{ path.pathName }}</a></li>
+		{% empty %}
+			<li>暂无</li>
+		{% endfor %}
+		</ul>
+		</div>
+		{% endif %}
+		{% endblock %}
+
+		{% block path_detail_next_targets %}
 		{% if path_detail.all_next_paths %}
 		<div id="next-targets">
 		<h3>接下来的目标</h3>
 		<ul class="list-unstyled" style="margin-left: 20px;">
 		{% for path in path_detail.all_next_paths %}
-		     <li><a href="{{ path.get_absolute_url }}">{{ path.pathName }}</a></li>
+		    <li style="margin-bottom: 10px;">
+		    	<a href="{{ path.get_absolute_url }}">strong{{ path.pathName }}</a>
+		    	{% if forloop.first %}
+		    	<br/>
+		    	<small>{{ path_detail.pathLead }}</small>
+		    	<br/>
+		    	<small>{{ path_detail.pathLength }} 分钟</small>
+		    	{% endif %}
+		    </li>
+		{% empty %}
+			<li>暂无</li>
 		{% endfor %}
 		</ul>
 		</div>
 		{% endif %}
-		
 		{% endblock %}
 	</div>
 </div>

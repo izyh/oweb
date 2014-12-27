@@ -92,10 +92,11 @@
 		    	<a href="{{ path.get_absolute_url }}">{{ path.title }}</a>
 
 		    	{% if forloop.first %}
-		    	<br/>
-		    	<small>{{ path.description }}</small>
-		    	<br/>
-		    	<small>{{ path.pathLength }} 分钟</small>
+		    	<div style="padding-left:10px">
+		    		<small>{{ path.description }}</small>
+			    	<br/>
+			    	<small>{{ path.pathLength }} 分钟</small>
+		    	</div>
 		    	{% endif %}
 
 		    	{% else %}

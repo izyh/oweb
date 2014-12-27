@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n  mezzanine_tags staticfiles%}
+{% load i18n  future mezzanine_tags staticfiles blog_tags %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 {% block breadcrumb_wrapper %}
@@ -15,6 +15,7 @@
 
 {% block all_content %}
 <section id="{% block section_id %}featured{% endblock %}">
+
 {% block left_wrapper %}
 {% endblock %}
 
@@ -31,7 +32,7 @@
             font-weight: 700;
             font-size: 100px;"
             >openRPi</h1>
-        <h2 style="line-height: 1.25;color: white;">专注于嵌入式入门与兴趣培养计划的开源组织</h2>
+        <h2 style="line-height: 1.25;color: white;">专注于嵌入式入门与兴趣培养的开源组织</h2>
         <!-- <p class="masthead-button-links">
             <a class="btn btn-lg btn-primary btn-shadow" href="#" target="_blank" role="button">进一步了解 openRPi</a>
             <ul class="masthead-links">
@@ -46,9 +47,90 @@
 
 </div>
 {% endblock %}
+
 {% block right_wrapper %}
 {% endblock %}
 </section>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>产品</h4>
+                                <div class="icon">
+                                <i class="fa fa-desktop fa-3x"></i>
+                                </div>
+                                <p class="">
+                                最亲近的方式，<br/>踏入嵌入式的世界
+                                </p>
+                                    
+                            </div>
+                            <div class="box-bottom">
+                                <a href="/product">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>文章</h4>
+                                <div class="icon">
+                                <i class="fa fa-pagelines fa-3x"></i>
+                                </div>
+                                <p>
+                                理解初学者，<br/>发展技能，更培养兴趣
+                                </p>
+                                    
+                            </div>
+                            <div class="box-bottom">
+                                <a href="/blog">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>下载</h4>
+                                <div class="icon">
+                                <i class="fa fa-download fa-3x"></i>
+                                </div>
+                                <p>
+                                设计资料与代码全部开源，<br/>自由免费下载
+                                </p>
+                                    
+                            </div>
+                            <div class="box-bottom">
+                                <a href="/download">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="box">
+                            <div class="box-gray aligncenter">
+                                <h4>关于</h4>
+                                <div class="icon">
+                                <i class="fa fa-question-circle fa-3x"></i>
+                                </div>
+                                <p>
+                                不陌生的openRPi，<br/>它和你有故事
+                                </p>
+                                    
+                            </div>
+                            <div class="box-bottom">
+                                <a href="/about">了解更多</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </section>
 
 {% endblock %}
 
@@ -66,7 +148,7 @@ background: transparent;">
             <div class="col-md-12">
             
                 <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
-                <p class="text-center small">专注于嵌入式入门与兴趣培养计划的开源组织</p>
+                <p class="text-center small">专注于嵌入式入门与兴趣培养的开源组织</p>
             
             </div>
         </div>

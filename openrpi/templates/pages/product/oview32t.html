@@ -1,0 +1,47 @@
+{% extends "pages/product/oview24t.html" %}
+
+{% load mezzanine_tags staticfiles %}
+
+{% block oview_summary %}
+	<h2>oView32t 简介</h2>
+	<p>oView32t是一款适用于树莓派B/B+的小尺寸TFT液晶显示屏（带触摸）。</p>
+	<p>oView32t分辨率达320×240，屏幕对角线3.2英寸，采用ILI9341芯片驱动。数据接口为4线SPI，时钟频率最高可达600MHz。触摸屏由XPT2046芯片驱动。</p>
+{% endblock %}
+
+{% block oview_img1 %}
+	{% static 'media/uploads/oview32t/oview32t正面2.jpg' %}
+{% endblock %}
+{% block oview_img2 %}
+	{% static 'media/uploads/oview32t/oview32t正面.jpg' %}
+{% endblock %}
+{% block oview_img3 %}
+	{% static 'media/uploads/oview32t/oview32t正面3.jpg' %}
+{% endblock %}
+{% block oview_img4 %}
+	{% static 'media/uploads/oview32t/oview32t背面.jpg' %}
+{% endblock %}
+{% block oview_img5 %}
+	{% static 'media/uploads/oview32t/oview32t背面2.jpg' %}
+{% endblock %}
+
+{% block oview_img_s_1 %}
+	{% static 'media/uploads/oview32t/oview32t正面2.jpg' %}
+{% endblock %}
+{% block oview_img_s_2 %}
+	{% static 'media/uploads/oview32t/oview32t正面.jpg' %}
+{% endblock %}
+{% block oview_img_s_3 %}
+	{% static 'media/uploads/oview32t/oview32t正面3.jpg' %}
+{% endblock %}
+{% block oview_img_s_4 %}
+	{% static 'media/uploads/oview32t/oview32t背面.jpg' %}
+{% endblock %}
+{% block oview_img_s_5 %}
+	{% static 'media/uploads/oview32t/oview32t背面2.jpg' %}
+{% endblock %}
+
+{% block oview_specification %}
+	<h1>电气连接</h1>
+	<h3>oView32t的电气连接与oView24t保持一致</h3>
+	<img src="{% static 'media/uploads/oview24t/oview24t电气连接.jpg' %}" alt="">
+{% endblock %}

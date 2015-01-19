@@ -57,26 +57,28 @@ a[target=_blank]:after {
 		<div class="col-lg-8 col-lg-offset-2">
 			<div class="row">
 				<div class="col-lg-6">
+					{% block oview_summary %}
 					<h2>oView24t 简介</h2>
 					<p>oView24t是一款适用于树莓派B/B+的小尺寸TFT液晶显示屏（带触摸）。</p>
 					<p>oView24t分辨率达320×240，屏幕对角线2.4英寸，采用ILI9341芯片驱动。数据接口为4线SPI，时钟频率最高可达600MHz。触摸屏由XPT2046芯片驱动。</p>
+					{% endblock %}
 				</div>
 				<div class="col-lg-5 col-lg-offset-1" style="margin-top: 30px;">
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="desc_img_0">
-							<img src="{% static 'media/uploads/oview24t/oview正面2.jpg' %}" alt="" class="img-responsive shadow">
+							<img src="{% block oview_img1 %}{% static 'media/uploads/oview24t/oview正面2.jpg' %}{% endblock %}" alt="" class="img-responsive shadow">
 						</div>
 						<div role="tabpanel" class="tab-pane fade " id="desc_img_1">
-							<img src="{% static 'media/uploads/oview24t/oview正面3.jpg' %}" alt="" class="img-responsive shadow">
+							<img src="{% block oview_img2 %}{% static 'media/uploads/oview24t/oview正面3.jpg' %}{% endblock %}" alt="" class="img-responsive shadow">
 						</div>
 						<div role="tabpanel" class="tab-pane fade " id="desc_img_2">
-							<img src="{% static 'media/uploads/oview24t/oview24t正面.jpg' %}" alt="" class="img-responsive shadow">
+							<img src="{% block oview_img3 %}{% static 'media/uploads/oview24t/oview24t正面.jpg' %}{% endblock %}" alt="" class="img-responsive shadow">
 						</div>
 						<div role="tabpanel" class="tab-pane fade " id="desc_img_3">
-							<img src="{% static 'media/uploads/oview24t/oview24t背面.jpg' %}" alt="" class="img-responsive shadow">
+							<img src="{% block oview_img4 %}{% static 'media/uploads/oview24t/oview24t背面.jpg' %}{% endblock %}" alt="" class="img-responsive shadow">
 						</div>
 						<div role="tabpanel" class="tab-pane fade " id="desc_img_4">
-							<img src="{% static 'media/uploads/oview24t/oview背面2.jpg' %}" alt="" class="img-responsive shadow">
+							<img src="{% block oview_img5 %}{% static 'media/uploads/oview24t/oview背面2.jpg' %}{% endblock %}" alt="" class="img-responsive shadow">
 						</div>
 					</div>
 				</div>
@@ -88,19 +90,19 @@ a[target=_blank]:after {
 		<div class="col-lg-6 col-lg-offset-3">
 			<ul class="nav nav-pills nav-justified" role="tablist" id="img_tab">
 				<li role="presentation" class="active"><a href="#desc_img_0" role="tab" data-toggle="tab">
-					<img src="{% static 'media/uploads/oview24t/oview正面2.jpg' %}" alt="" width="60" height="40">
+					<img src="{% block oview_img_s_1 %}{% static 'media/uploads/oview24t/oview正面2.jpg' %}{% endblock %}" alt="" width="60" height="40">
 				</a></li>
 				<li role="presentation"><a href="#desc_img_1" role="tab" data-toggle="tab">
-					<img src="{% static 'media/uploads/oview24t/oview正面3.jpg' %}" alt="" width="60" height="40">
+					<img src="{% block oview_img_s_2 %}{% static 'media/uploads/oview24t/oview正面3.jpg' %}{% endblock %}" alt="" width="60" height="40">
 				</a></li>
 				<li role="presentation"><a href="#desc_img_2" role="tab" data-toggle="tab">
-					<img src="{% static 'media/uploads/oview24t/oview24t正面.jpg' %}" alt="" width="60" height="40">
+					<img src="{% block oview_img_s_3 %}{% static 'media/uploads/oview24t/oview24t正面.jpg' %}{% endblock %}" alt="" width="60" height="40">
 				</a></li>
 				<li role="presentation"><a href="#desc_img_3" role="tab" data-toggle="tab">
-					<img src="{% static 'media/uploads/oview24t/oview24t背面.jpg' %}" alt="" width="60" height="40">
+					<img src="{% block oview_img_s_4 %}{% static 'media/uploads/oview24t/oview24t背面.jpg' %}{% endblock %}" alt="" width="60" height="40">
 				</a></li>
 				<li role="presentation"><a href="#desc_img_4" role="tab" data-toggle="tab">
-					<img src="{% static 'media/uploads/oview24t/oview背面2.jpg' %}" alt="" width="60" height="40">
+					<img src="{% block oview_img_s_5 %}{% static 'media/uploads/oview24t/oview背面2.jpg' %}{% endblock %}" alt="" width="60" height="40">
 				</a></li>
 			</ul>
 		</div>
@@ -163,16 +165,20 @@ a[target=_blank]:after {
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="feature">
+					{% block oview_feature %}
 					<h1>显示特性</h1>
 					<img src="{% static 'media/uploads/oView24t/10.png' %}" alt="">
 					<h1>TFT电气特性</h1>
 					<img src="{% static 'media/uploads/oView24t/11.png' %}" alt="">
 					<h1>LED背光源特性</h1>
 					<img src="{% static 'media/uploads/oView24t/12.png' %}" alt="">
+					{% endblock %}
 				</div>
 				<div role="tabpanel" class="tab-pane" id="specification">
+					{% block oview_specification %}
 					<h1>电气连接</h1>
 					<img src="{% static 'media/uploads/oview24t/oview24t电气连接.jpg' %}" alt="">
+					{% endblock %}
 				</div>
 			</div>
 		</div>

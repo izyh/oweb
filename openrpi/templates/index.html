@@ -24,25 +24,43 @@
 <div class="col-md-{% block main_col_size %}none{% endblock %} {% block main_class %}{% endblock %}">
 
 {% block main %}
-<div class="jumbotron jumbotron-dblue jumbotron-textcenter" style="padding: 90px 0 110px;">
+<!-- start slider -->
     <div class="container">
-        <h1 style="
-            line-height: 1;
-            letter-spacing: -2px;
-            font-weight: 700;
-            font-size: 100px;"
-            >openRPi</h1>
-        <h2 style="line-height: 1.25;color: white;">专注于嵌入式入门与兴趣培养的开源组织</h2>
-        <!-- <p class="masthead-button-links">
-            <a class="btn btn-lg btn-primary btn-shadow" href="#" target="_blank" role="button">进一步了解 openRPi</a>
-            <ul class="masthead-links">
-                <li>
-                    <a href="#" target="_blank" role="button">openRPi 嵌入式教程</a>
-                </li>
+        <div class="row">
+            <div class="col-lg-12">
+    <!-- Slider -->
+        <div id="main-slider" class="flexslider">
+            <ul class="slides">
+              <li>
+                <img src="{% static "media/uploads/page/home/336f50aa-eaab-4d0b-a462-fecc8d71b65a.jpg" %}" alt="" />
+                <div class="flex-caption">
+                    <h3>oView 研发</h3> 
+                    <p>多次迭代与试错，保证 oView 的高品质设计</p> 
+                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
+                </div>
+              </li>
+              <li>
+                <img src="{% static "media/uploads/page/home/503ec106-88c3-4a8d-8bd1-a39e02c4deaf.jpg" %}" alt="" />
+                <div class="flex-caption">
+                    <h3>oView 研发</h3> 
+                    <p>多次迭代与试错，保证 oView 的高品质设计</p> 
+                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
+                </div>
+              </li>
+              <li>
+                <img src="{% static "media/uploads/page/home/6f77c460-ed41-47bb-aa38-92826844e819.jpg" %}" alt="" />
+                <div class="flex-caption">
+                    <h3>oView 研发</h3> 
+                    <p>多次迭代与试错，保证 oView 的高品质设计</p>  
+                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
+                </div>
+              </li>
             </ul>
-        </p> -->
+        </div>
+    <!-- end slider -->
+            </div>
+        </div>
     </div>
-</div>
 {% endblock %}
 
 </div>
@@ -50,6 +68,22 @@
 
 {% block right_wrapper %}
 {% endblock %}
+</section>
+
+<section class="callaction">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="big-cta">
+                    <div class="cta-text">
+                        <!-- <h1 style="margin-bottom: 40px;font-size: 70px;">openRPi</h1> -->
+                        <h1><img height="80px" src="{% static "media/uploads/page/home/logo.png" %}" alt="openRPi"></h1>
+                        <h2>专注于嵌入式入门与兴趣培养的开源组织</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="content">
@@ -128,31 +162,54 @@
                 </div>
             </div>
         </div>
+        <!-- divider -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="solidline">
+                </div>
+            </div>
+        </div>
+        <!-- end divider -->
+        <!-- Portfolio Projects -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="heading">动态</h4>
+                <div class="row">
+                    <section id="projects">
+                    <ul class="portfolio" id="thumbs">
+                        <!-- Item Project and Filter Name -->
+                        <li data-type="web" data-id="id-0" class="col-lg-3 design">
+                        <div class="item-thumbs">
+                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                        <a href="{% static "media/uploads/page/home/dd105bde-a2a8-47aa-afdf-16bb5a4afaa8.jpg" %}" title="oView32t" data-fancybox-group="gallery" class="hover-wrap fancybox">
+                        <span class="overlay-img"></span>
+                        <span class="overlay-img-thumb font-icon-plus"></span>
+                        </a>
+                        <!-- Thumb Image and Description -->
+                        <img alt="专为树莓派设计使用的3.2英寸TFT显示屏（带触摸）。全网最详细中文使用说明和技术资料，全部开源免费共享。适用于树莓派/Linux学习与开发。" src="{% static "media/uploads/page/home/dd105bde-a2a8-47aa-afdf-16bb5a4afaa8.jpg" %}">
+                        </div>
+                        </li>
+                        <!-- End Item Project -->
+                        <!-- Item Project and Filter Name -->
+                        <li data-type="icon" data-id="id-1" class="item-thumbs col-lg-3 design">
+                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                        <a href="{% static "media/uploads/page/home/661ecd25-e7d0-4369-b6c9-c9244878f6d4.jpg" %}" title="oView24t" data-fancybox-group="gallery" class="hover-wrap fancybox">
+                        <span class="overlay-img"></span>
+                        <span class="overlay-img-thumb font-icon-plus"></span>
+                        </a>
+                        <!-- Thumb Image and Description -->
+                        <img alt="专为树莓派设计使用的2.4英寸TFT显示屏（带触摸）。全网最详细中文使用说明和技术资料，全部开源免费共享。适用于树莓派/Linux学习与开发。" src="{% static "media/uploads/page/home/661ecd25-e7d0-4369-b6c9-c9244878f6d4.jpg" %}">
+                        </li>
+                        <!-- End Item Project -->
+                    </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
 
     </div>
     </section>
 
 {% endblock %}
 
-{% block footer %}
-<footer role="contentinfo" style="
-padding-top: 40px;
-padding-bottom: 0px;
-margin-top: 100px;
-color: rgb(137, 137, 137);
-text-align: center;
-border-top: 1px solid #e5e5e5;
-background: transparent;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            
-                <p style="margin-bottom: 0px;" class="text-center">©2014 openRPi</p>
-                <p class="text-center small">专注于嵌入式入门与兴趣培养的开源组织</p>
-                <p class="text-center small"><a target="_blank" href="http://www.miitbeian.gov.cn" style="color: rgb(137, 137, 137);">粤ICP备14098230号-1</a></p>
-            
-            </div>
-        </div>
-    </div>
-</footer>
-{% endblock %}
+

@@ -35,11 +35,14 @@
 		{% block blog_post_list_post_content %}
 			
 		{% endblock %}
-		{% block blog_post_detail_content %}
-		{% editable blog_post.content %}
-		{{ blog_post.content|richtext_filters|safe }}
-		{% endeditable %}
-		{% endblock %}
+
+		<div class="doc-content">
+			{% block blog_post_detail_content %}
+			{% editable blog_post.content %}
+			{{ blog_post.content|richtext_filters|safe }}
+			{% endeditable %}
+			{% endblock %}
+		</div>
 		
 		{% block read_more%}
 		{% endblock %}

@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/style.css" %}">
 <link rel="stylesheet" href="{% static "skins/default.css" %}">
+<link rel="stylesheet" href="http://cdn.bootcss.com/prettify/r298/prettify.css">
 <link rel="stylesheet" href="{% static "media/uploads/css/openrpi.css" %}">
 
 {% if LANGUAGE_BIDI %}
@@ -246,13 +247,22 @@ var _hmt = _hmt || [];
 <script src="{% static "js/jquery.easing.1.3.js"%}"></script>
 <script src="{% static "js/jquery.fancybox.pack.js"%}"></script>
 <script src="{% static "js/jquery.fancybox-media.js"%}"></script>
-<script src="{% static "js/google-code-prettify/prettify.js"%}"></script>
+<script src="http://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
 <script src="{% static "js/portfolio/jquery.quicksand.js"%}"></script>
 <script src="{% static "js/portfolio/setting.js"%}"></script>
 <script src="{% static "js/jquery.flexslider.js"%}"></script>
 <script src="{% static "js/animate.js"%}"></script>
 <script src="{% static "js/custom.js"%}"></script>
 {% endcompress %}
+
+<script>
+$(window).load(function () {
+{% block on_window_load %}
+	$("pre").addClass("prettyprint");
+	prettyPrint();
+{% endblock %}
+})
+</script>
 
 </body>
 </html>

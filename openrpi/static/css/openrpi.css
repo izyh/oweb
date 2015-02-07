@@ -1,3 +1,4 @@
+
 /********************** overwrite */
 .navbar-brand {
     color: #222;
@@ -47,6 +48,12 @@ header .nav .caret {
     border-top-color: lightgray;
 }
 
+/***************************** google prettify overwrite */
+pre.prettyprint {
+    padding: 8px;
+    border: 1px solid #e1e1e8;
+}
+
 /*************************** body */
 body p {
     font-size: 16px;
@@ -93,6 +100,15 @@ body p {
 }
 
 /* doc */
+.doc-content {
+    color: rgb(74, 74, 74);
+    margin-bottom: 80px;
+    font-family: 'Open Sans', sans-serif;
+    /*border: 1px solid rgba(210, 210, 210, 1);
+    border-radius: 0.3em;
+    padding: 0 2em 1em 2em;
+    box-shadow: 0 0 10px 0 rgb(213, 213, 213);*/
+}
 .doc-content a[target=_blank]:after {
     content: " ›"
 }
@@ -108,6 +124,10 @@ body p {
     padding-bottom: 9px;
     margin: 40px 0 20px;
     border-bottom: 1px solid #eee
+}
+.doc-content blockquote {
+    margin-left: 2em;
+    padding-top: 0px;
 }
 
 /*************************** toc */

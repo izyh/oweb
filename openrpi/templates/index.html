@@ -2,6 +2,11 @@
 {% load i18n  future mezzanine_tags staticfiles blog_tags %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "css/openrpi-home.css" %}">
+{% endblock %}
+
 {% block breadcrumb_wrapper %}
 {% endblock %}
 
@@ -21,69 +26,46 @@
 
 
 {% block main_wrapper %}
-<div class="col-md-{% block main_col_size %}none{% endblock %} {% block main_class %}{% endblock %}">
 
 {% block main %}
 <!-- start slider -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
     <!-- Slider -->
-        <div id="main-slider" class="flexslider">
+        <div id="main-slider" class="jumbotron flexslider ">
             <ul class="slides">
               <li>
-                <img src="{% static "media/uploads/page/home/336f50aa-eaab-4d0b-a462-fecc8d71b65a.jpg" %}" alt="" />
-                <div class="flex-caption">
-                    <h3>oView 研发</h3> 
-                    <p>多次迭代与试错，保证 oView 的高品质设计</p> 
-                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
-                </div>
-              </li>
-              <li>
-                <img src="{% static "media/uploads/page/home/503ec106-88c3-4a8d-8bd1-a39e02c4deaf.jpg" %}" alt="" />
-                <div class="flex-caption">
-                    <h3>oView 研发</h3> 
-                    <p>多次迭代与试错，保证 oView 的高品质设计</p> 
-                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
-                </div>
-              </li>
-              <li>
-                <img src="{% static "media/uploads/page/home/6f77c460-ed41-47bb-aa38-92826844e819.jpg" %}" alt="" />
-                <div class="flex-caption">
-                    <h3>oView 研发</h3> 
-                    <p>多次迭代与试错，保证 oView 的高品质设计</p>  
-                    <a href="http://www.openrpi.org/product/" class="btn btn-theme">了解更多</a>
+                <img src="{% static "media/uploads/page/home/IMG_0323.png" %}" alt="" />
+                <div class="desc-box" style="
+                left: 25%;
+                right: 25%;
+                width: 50%;
+                text-align: center;
+                ">
+                    <h1>oView | 树莓派小尺寸显示屏</h1> 
+                    <p>全网最详细中文使用说明和技术资料，全部开源免费共享<br>
+                    适用于树莓派/Linux学习与开发</p>  
+                    <a href="http://www.openrpi.org/product/oview/" class="btn btn-default">了解更多</a>
                 </div>
               </li>
             </ul>
         </div>
     <!-- end slider -->
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
-</div>
 {% endblock %}
 
 {% block right_wrapper %}
 {% endblock %}
 </section>
 
-<section class="callaction">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="big-cta">
-                    <div class="cta-text">
-                        <!-- <h1 style="margin-bottom: 40px;font-size: 70px;">openRPi</h1> -->
-                        <h1><img height="80px" src="{% static "media/uploads/page/home/logo.png" %}" alt="openRPi"></h1>
-                        <h2>专注于嵌入式入门与兴趣培养的开源组织</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section>
+    <p class="aligncenter" style="
+    margin-top:2em;
+    font-size:2em;
+    color: black;">
+        <span style="
+        font-size:2.2em">openRPi</span>
+        <br/>
+        一个专注于嵌入式入门与兴趣培养的开源组织</p>
 </section>
 
 <section id="content">
@@ -92,117 +74,77 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="box">
-                            <div class="box-gray aligncenter">
-                                <h4>产品</h4>
+                        <div class="">
+                            <div class="box-gray aligncenter" style="
+                            background:transparent;
+                            padding: 20px 20px 10px;">
+                                <h3>产品</h3>
                                 <div class="icon">
                                 <i class="fa fa-desktop fa-3x"></i>
                                 </div>
                                 <p class="">
                                 最亲近的方式，<br/>踏入嵌入式的世界
                                 </p>
-                                    
                             </div>
-                            <div class="box-bottom">
+                            <div class="aligncenter">
                                 <a href="/product">了解更多</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="box">
-                            <div class="box-gray aligncenter">
-                                <h4>文章</h4>
+                        <div class="">
+                            <div class="box-gray aligncenter" style="
+                            background:transparent;
+                            padding: 20px 20px 10px;">
+                                <h3>文章</h3>
                                 <div class="icon">
                                 <i class="fa fa-pagelines fa-3x"></i>
                                 </div>
-                                <p>
+                                <p class="">
                                 理解初学者，<br/>发展技能，更培养兴趣
                                 </p>
-                                    
                             </div>
-                            <div class="box-bottom">
+                            <div class="aligncenter">
                                 <a href="/blog">了解更多</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="box">
-                            <div class="box-gray aligncenter">
-                                <h4>下载</h4>
+                        <div class="">
+                            <div class="box-gray aligncenter" style="
+                            background:transparent;
+                            padding: 20px 20px 10px;">
+                                <h3>下载</h3>
                                 <div class="icon">
                                 <i class="fa fa-download fa-3x"></i>
                                 </div>
-                                <p>
+                                <p class="">
                                 设计资料与代码全部开源，<br/>自由免费下载
                                 </p>
-                                    
                             </div>
-                            <div class="box-bottom">
+                            <div class="aligncenter">
                                 <a href="/download">了解更多</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="box">
-                            <div class="box-gray aligncenter">
-                                <h4>关于</h4>
+                        <div class="">
+                            <div class="box-gray aligncenter" style="
+                            background:transparent;
+                            padding: 20px 20px 10px;">
+                                <h3>关于</h3>
                                 <div class="icon">
                                 <i class="fa fa-question-circle fa-3x"></i>
                                 </div>
-                                <p>
+                                <p class="">
                                 不陌生的openRPi，<br/>它和你有故事
                                 </p>
-                                    
                             </div>
-                            <div class="box-bottom">
+                            <div class="aligncenter">
                                 <a href="/about">了解更多</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- divider -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="solidline">
-                </div>
-            </div>
-        </div>
-        <!-- end divider -->
-        <!-- Portfolio Projects -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h4 class="heading">动态</h4>
-                <div class="row">
-                    <section id="projects">
-                    <ul class="portfolio" id="thumbs">
-                        <!-- Item Project and Filter Name -->
-                        <li data-type="web" data-id="id-0" class="col-lg-3 design">
-                        <div class="item-thumbs">
-                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                        <a href="{% static "media/uploads/page/home/dd105bde-a2a8-47aa-afdf-16bb5a4afaa8.jpg" %}" title="oView32t" data-fancybox-group="gallery" class="hover-wrap fancybox">
-                        <span class="overlay-img"></span>
-                        <span class="overlay-img-thumb font-icon-plus"></span>
-                        </a>
-                        <!-- Thumb Image and Description -->
-                        <img alt="专为树莓派设计使用的3.2英寸TFT显示屏（带触摸）。全网最详细中文使用说明和技术资料，全部开源免费共享。适用于树莓派/Linux学习与开发。" src="{% static "media/uploads/page/home/dd105bde-a2a8-47aa-afdf-16bb5a4afaa8.jpg" %}">
-                        </div>
-                        </li>
-                        <!-- End Item Project -->
-                        <!-- Item Project and Filter Name -->
-                        <li data-type="icon" data-id="id-1" class="item-thumbs col-lg-3 design">
-                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                        <a href="{% static "media/uploads/page/home/661ecd25-e7d0-4369-b6c9-c9244878f6d4.jpg" %}" title="oView24t" data-fancybox-group="gallery" class="hover-wrap fancybox">
-                        <span class="overlay-img"></span>
-                        <span class="overlay-img-thumb font-icon-plus"></span>
-                        </a>
-                        <!-- Thumb Image and Description -->
-                        <img alt="专为树莓派设计使用的2.4英寸TFT显示屏（带触摸）。全网最详细中文使用说明和技术资料，全部开源免费共享。适用于树莓派/Linux学习与开发。" src="{% static "media/uploads/page/home/661ecd25-e7d0-4369-b6c9-c9244878f6d4.jpg" %}">
-                        </li>
-                        <!-- End Item Project -->
-                    </ul>
-                    </section>
                 </div>
             </div>
         </div>

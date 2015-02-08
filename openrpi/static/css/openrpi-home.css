@@ -1,0 +1,49 @@
+/*************************** jumbotron */
+#featured .jumbotron {
+	margin-top: 0;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0);
+	background-origin: padding-box;
+	background-size: cover;
+	background-image: url(/static/media/uploads/page/home/bg_2.jpg);
+}
+#featured .jumbotron .slides img {
+	height: 520px; /*固定slider高度*/
+	width: auto;
+	margin: 0 auto 0 auto; /*图片水平居中*/
+}
+#featured .jumbotron .slides .desc-box {
+	position: absolute;
+	top: 0;
+	margin-top: 40px;
+}
+#featured .jumbotron .slides .desc-box h1,
+#featured .jumbotron .slides .desc-box h2,
+#featured .jumbotron .slides .desc-box h3,
+#featured .jumbotron .slides .desc-box h4,
+#featured .jumbotron .slides .desc-box h5,
+#featured .jumbotron .slides .desc-box h6,
+#featured .jumbotron .slides .desc-box p {
+	color: white;
+}
+#featured .jumbotron .slides .desc-box h1 {
+	text-align: center;
+	font-size: 2.4em;
+	font-weight: 300;
+}
+#featured .jumbotron .slides .desc-box p {
+	font-weight: 100;
+	font-size: 1.2em;
+}
+#featured .jumbotron .slides .desc-box a {
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+	border-radius: 2px;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	margin-top: 1.2em;
+	font-weight: 100;
+	font-size: 1.1em;
+}

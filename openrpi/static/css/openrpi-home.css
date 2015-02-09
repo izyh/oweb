@@ -6,7 +6,7 @@
 	background-color: rgba(0, 0, 0, 0);
 	background-origin: padding-box;
 	background-size: cover;
-	background-image: url(/static/media/uploads/page/home/bg_2.jpg);
+	background-image: url(/static/img/home/jum_bg.jpg);
 }
 #featured .jumbotron .slides img {
 	height: 520px; /*固定slider高度*/

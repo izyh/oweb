@@ -1,13 +1,14 @@
 #from django.shortcuts import render
 from mezzanine.utils.views import render
+from django.http import HttpResponse
 import hashlib
 
 # Create your views here.
 def wechatInterface(request):
-	signature=request.signature
-	timestamp=request.timestamp
-	nonce=request.nonce
-	echostr=request.echostr
+	signature=request.GET.get("signature")
+	timestamp=request.GET.get("timestamp")
+	nonce=request.GET.get("nonce")
+	echostr=request.GET.get("echostr")
 	token="zhuangyuhao"
 	list=[token,timestamp,nonce]
 	list.sort()
@@ -16,4 +17,5 @@ def wechatInterface(request):
 	hashcode=sha1.hexdigest()
 	
 	if hashcode == signature:
-		return echostr
+		return HttpResponse(echostr)
+	return HttpResponse("error!")

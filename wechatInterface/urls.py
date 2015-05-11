@@ -3,5 +3,5 @@ from django.conf.urls import patterns, url
 from mezzanine.conf import settings
 
 urlpatterns = patterns("wechatInterface.views",
-    url("^wechat/$" , "wechatInterface", name="wechatInterface"),
+    url("^auth/$" , "wechatInterface", name="wechatInterface"),
 )

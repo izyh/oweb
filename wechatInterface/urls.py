@@ -4,4 +4,5 @@ from mezzanine.conf import settings
 
 urlpatterns = patterns("wechatInterface.views",
     url("^auth/$" , "wechatInterface", name="wechatInterface"),
+	#url("^test/$" , "wechattest", name="wechattest"),
 )

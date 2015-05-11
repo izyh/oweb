@@ -231,6 +231,7 @@ INSTALLED_APPS = (
     "openrpi",
 	"accounts",
 	"learningTopology",
+	"wechatInterface",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

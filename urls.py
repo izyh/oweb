@@ -64,6 +64,7 @@ urlpatterns += patterns('',
     # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
     # WILL NEVER BE MATCHED!
     ("^learn/", include("learningTopology.urls")),
+	("^wechat/",include("wechatInterface.urls")),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want

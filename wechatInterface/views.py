@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import hashlib
 
 # Create your views here.
-def wechatInterface(request):
+def wechatInterface(request, template="wechat/wechat_auth.html"):
 	signature=request.GET.get("signature")
 	timestamp=request.GET.get("timestamp")
 	nonce=request.GET.get("nonce")

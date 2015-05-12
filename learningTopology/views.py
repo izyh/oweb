@@ -16,7 +16,7 @@ from mezzanine.utils.models import get_user_model
 from learningTopology.models import Path, Node
 
 def learn_path_detail(request, template="learn/path_detail.html"):
-	return HttpResponse("HelloWorld!")
+	return HttpResponse("ok")
 	s = request.GET['s']
 	e = request.GET['e']
 	try:

@@ -39,4 +39,4 @@ def wechatInterface(request):
 			<MsgType><![CDATA[text]]>></MsgType>
 			<Content><![CDATA[%s]]></Content>
 				</xml>'''%(fromUser,toUser,str(int(time.time())),replyContent)
-		return HttpResponse(reply)
+		return HttpResponse(reply,content_type="application/xml")

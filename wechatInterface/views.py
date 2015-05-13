@@ -3,6 +3,7 @@
 from mezzanine.utils.views import render
 from django.http import HttpResponse
 import hashlib, lxml, time
+from lxml import etree
 
 # Create your views here.
 def wechatInterface(request):
@@ -21,9 +22,8 @@ def wechatInterface(request):
 			return HttpResponse(echostr)
 		return HttpResponse("error!")
 	elif request.method=="POST":
-		return HttpResponse("hello world!")
 		xml_str=request.body
-		xml=etree.fromstring(str_xml)
+		xml=etree.fromstring(xml_str)
 		toUser=xml.find("ToUserName").text
 		fromUser=xml.find("FromUserName").text
 		createTime=xml.find("CreateTime").text
@@ -34,10 +34,10 @@ def wechatInterface(request):
 				replyContent=u"欢迎使用智能硬件服务号，您将可以通过本服务号控制您的智能硬件，相关功能正在玩命开发中，敬请期待！"
 				reply='''
 					<xml>
-					<ToUserName><![CDATA[%s]></ToUserName>
+					<ToUserName><![CDATA[%s]]></ToUserName>
 					<FromUserName><![CDATA[%s]]></FromUserName>
 					<CreateTime><![CDATA[%s]]></CreateTime>
-					<MsgType><![CDATA[text]]>></MsgType>
+					<MsgType><![CDATA[text]]></MsgType>
 					<Content><![CDATA[%s]]></Content>
 					</xml>'''%(fromUser,toUser,str(int(time.time())),replyContent)
 				return HttpResponse(reply, content_type="application/xml")

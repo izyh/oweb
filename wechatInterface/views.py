@@ -27,16 +27,16 @@ def wechatInterface(request):
 		fromUser=xml.find("FromUserName").text
 		createTime=xml.find("CreateTime").text
 		msgType=xml.find("MsgType").text
-		if msgType=="event":
-			content=xml.find("Event").text
-			if content=="subscribe":
-				replyContent=u"欢迎使用智能硬件服务号，您将可以通过本服务号控制您的智能硬件，相关功能正在玩命开发中，敬请期待！"
-				reply='''
-					<xml>
-					<ToUserName><![CDATA[%s]></ToUserName>
-					<FromUserName><![CDATA[%s]]></FromUserName>
-					<CreateTime><![CDATA[%s]]></CreateTime>
-					<MsgType><![CDATA[text]]>></MsgType>
-					<Content><![CDATA[%s]]></Content>
-					</xml>'''%(fromUser,toUser,str(int(time.time())),replyContent)
-				return HttpResponse(reply)
+		#if msgType=="event":
+			#content=xml.find("Event").text
+			#if content=="subscribe":
+		replyContent=u"欢迎使用智能硬件服务号，您将可以通过本服务号控制您的智能硬件，相关功能正在玩命开发中，敬请期待！"
+		reply='''
+			<xml>
+			<ToUserName><![CDATA[%s]></ToUserName>
+			<FromUserName><![CDATA[%s]]></FromUserName>
+			<CreateTime><![CDATA[%s]]></CreateTime>
+			<MsgType><![CDATA[text]]>></MsgType>
+			<Content><![CDATA[%s]]></Content>
+				</xml>'''%(fromUser,toUser,str(int(time.time())),replyContent)
+		return HttpResponse(reply)

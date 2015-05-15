@@ -71,6 +71,10 @@ from __future__ import absolute_import, unicode_literals
 #     ),
 # )
 
+class DisableCSRFCheck(object):
+    def process_request(self, request):
+        setattr(request, '_dont_enforce_csrf_checks', True)
+
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
 BLOG_USE_FEATURED_IMAGE = True
@@ -287,6 +291,7 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.locale.LocaleMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.middleware.common.CommonMiddleware",
+	"settings.DisableCSRFCheck",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "mezzanine.core.request.CurrentRequestMiddleware",

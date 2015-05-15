@@ -2,12 +2,14 @@
 #from django.shortcuts import render
 from mezzanine.utils.views import render
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_protect
 import hashlib, lxml, time
 from lxml import etree
 
 # Create your views here.
-@csrf_exempt
+#@csrf_exempt
+#@csrf_protect 
 def wechatInterface(request):
 	signature=request.GET.get("signature")
 	timestamp=request.GET.get("timestamp")
